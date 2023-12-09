@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class VentanaOrigen extends JFrame {
-    private String[] Cuidades = {"Concepcion, Santiago, Valparaiso, Chillan"};
+    private String[] Cuidades = {"Concepcion, Santiago, Valparaiso, Chillan"}; //creo que esto es innecesario
     private JPanel Panel;
     private static ArrayList<JButton> Ciudades = new ArrayList<>();
     public VentanaOrigen() {
@@ -27,6 +27,7 @@ public class VentanaOrigen extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     Ciudades.remove(index);
                     VentanaOrigen.this.setVisible(false);
+                    //aquí podemos agregar algo para que la ventana sepa las direcciones
                 }
             });
         }

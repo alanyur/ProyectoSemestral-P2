@@ -6,16 +6,21 @@ import java.awt.*;
 public class Ventana extends JFrame {
     private Botones botones;
     private OrigenDestino origenDestino;
+    private VentanaBuses venbu;
     public Ventana(){
         this.setLayout(null);
         this.setBounds(0,0,1200,700);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
+        venbu = new VentanaBuses();
+        this.add(venbu);
+        venbu.setBounds(0 ,0 ,1200,500);
+        venbu.setVisible(true);
 
-        origenDestino = new OrigenDestino();
+       /* origenDestino = new OrigenDestino();
         this.add(origenDestino);
         origenDestino.setBounds(0 ,0 ,1200,500);
-        origenDestino.setVisible(true);
+        origenDestino.setVisible(true); */
 
         botones = new Botones();
         this.add(botones);
