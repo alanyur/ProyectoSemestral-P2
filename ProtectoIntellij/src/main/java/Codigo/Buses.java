@@ -7,8 +7,5 @@ public abstract class Buses {
     private ciudad origen;
     private ciudad destino;
 
-    public int getAsientos() {
-        return asientos;
-    }
 }
 

@@ -7,15 +7,22 @@ public class Ventana extends JFrame {
     private Botones botones;
     private OrigenDestino origenDestino;
     private VentanaBuses venbu;
+    private VentanaAsientos vena;
     public Ventana(){
         this.setLayout(null);
         this.setBounds(0,0,1200,700);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
+
+        vena = new VentanaAsientos();
+        this.add(vena);
+        vena.setBounds(0 ,0 ,1200,500);
+        vena.setVisible(true);
+        /*
         venbu = new VentanaBuses();
         this.add(venbu);
         venbu.setBounds(0 ,0 ,1200,500);
-        venbu.setVisible(true);
+        venbu.setVisible(true); */
 
        /* origenDestino = new OrigenDestino();
         this.add(origenDestino);
