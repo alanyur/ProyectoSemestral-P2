@@ -7,9 +7,13 @@ import java.awt.event.ActionListener;
 
 public class OrigenDestino extends JPanel {
     private ImageIcon icon = new ImageIcon("src/main/resources/logo1(1).png");
-    private JButton origen, destino;
+    private JButton origen;
+    private JButton destino;
     private JButton siguiente = new JButton("Siguiente");
     private JLabel logo;
+    private String Ruta;
+    private String TextOrigen;
+    private String TextDestino;
     public OrigenDestino(){
         this.setLayout(new FlowLayout());
         this.setBackground(new Color(61, 100, 227));
@@ -20,6 +24,7 @@ public class OrigenDestino extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     VentanaOrigen ventanaOrigen = new VentanaOrigen();
+                    TextOrigen = ventanaOrigen.getOrigen();
                 }
             });
 
@@ -32,8 +37,15 @@ public class OrigenDestino extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 VentanaDestino ventanaDestino = new VentanaDestino();
+                TextDestino = ventanaDestino.getDestino();
             }
         });
 
+        Ruta =  TextOrigen + "-" + TextDestino ;
+
+    }
+
+    public String getRuta() {
+        return Ruta;
     }
 }

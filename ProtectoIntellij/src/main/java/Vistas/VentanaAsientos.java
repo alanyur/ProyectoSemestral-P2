@@ -9,8 +9,8 @@ public class VentanaAsientos extends JPanel {
     private Buses bus;
     private ArrayList<JButton> sillas;
     public VentanaAsientos(){
-    for(int i=0; i<bus.getAsientos();i++) {
+    /*for(int i=0; i<bus.getAsientos();i++) {
 
-        }
+        }*/
     }
 }
