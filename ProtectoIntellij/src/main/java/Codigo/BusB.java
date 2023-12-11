@@ -6,4 +6,7 @@ public class BusB extends Buses {
     public int getAsientos() {
         return asientos;
     }
+    public int getPisos(){
+        return pisos;
+    }
 }

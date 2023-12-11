@@ -22,6 +22,8 @@ public class VentanaAsientos extends JPanel {
         bus = new BusA();
         int x = bus.getAsientos();
         int y= 0;
+        int w=0;
+        int v=0;
         int z= 0;
         sillas = new JButton[x];
         setLayout(null);
@@ -32,13 +34,32 @@ public class VentanaAsientos extends JPanel {
             Image imagenEscalada = imagenOriginal.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
             ImageIcon iconEscalado = new ImageIcon(imagenEscalada);
         sillas[i]= new JButton(iconEscalado);
-        if(i<x/2) {
-            sillas[i].setBounds(0, i * 25, 20, 20);
+        if(bus.getPisos()==1) {
+            if (i < x / 2) {
+                sillas[i].setBounds(0, i * 25, 20, 20);
+            } else {
+                sillas[i].setBounds(40, y * 25, 20, 20);
+                y++;
+            }
         }
-        else{
-            sillas[i].setBounds(40, y * 25, 20, 20);
-            y++;
-        }
+        if(bus.getPisos()==2){
+            if (i < x* 1/4) {
+                sillas[i].setBounds(0, i * 25, 20, 20);
+            }
+            if(i < x* 2/4){
+                sillas[i].setBounds(40, y * 25, 20, 20);
+                y++;
+            }
+            if(i < x* 3/4){
+                sillas[i].setBounds(80, w * 25, 20, 20);
+                w++;
+            }
+            else{
+                sillas[i].setBounds(120, v * 25, 20, 20);
+                v++;
+            }
+
+            }
             int finalZ = z;
             sillas[i].addActionListener(new ActionListener() {
             @Override
