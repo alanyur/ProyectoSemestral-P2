@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class VentanaAsientos extends JPanel {
     private BusC bus; //aqui debo hacer algo para que cambie segun el boton a pulsar
@@ -17,11 +18,23 @@ public class VentanaAsientos extends JPanel {
     private ImageIcon icon2 = new ImageIcon ("src/main/resources/asientopremium.png");
     private static JButton[] sillas;
     private JButton botonci;
-    public VentanaAsientos(){ //podriamos poner aca un parametro que estara dado por las otras ventanas
+    private JLabel labelSeleccionado;
+    private VentanaBuses ventanaBuses;
+    private Buses busSelec;
+    private HashMap<JLabel, Buses> mapa;
+    public VentanaAsientos(){
+        ventanaBuses = new VentanaBuses();
+        ventanaBuses.setVisible(false);
+        //podriamos poner aca un parametro que estara dado por las otras ventanas
        /* botonci = new JButton("prueba");
         this.add(botonci); */
+        //while (busSelec == null){
+            this.busSelec = ventanaBuses.getBusSeleccionado();
+
+        //}
         bus = new BusC();
         int x = bus.getAsientos();
+        //int x = busSelec.getAsientos();
         int y= 0;
         int w=0;
         int v=0;

@@ -41,7 +41,7 @@ public class OrigenDestino extends JPanel {
             }
         });
 
-        Ruta =  TextOrigen + "-" + TextDestino ;
+
 
     }
 
