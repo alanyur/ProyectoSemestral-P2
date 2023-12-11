@@ -49,5 +49,8 @@ public class VentanaAsientos extends JPanel {
         //tengo que cambiarle el tamaño a la imagen
         this.add(sillas[i]);
         }
+    /*for(int i=0; i<bus.getAsientos();i++) {
+
+        }*/
     }
 }

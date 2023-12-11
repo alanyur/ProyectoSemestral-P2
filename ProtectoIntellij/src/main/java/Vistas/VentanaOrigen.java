@@ -1,57 +1,99 @@
 package Vistas;
 
+import Codigo.Ciudades;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class VentanaOrigen extends JFrame {
-    private String[] Cuidades = {"Concepcion, Santiago, Valparaiso, Chillan"}; //creo que esto es innecesario
     private JPanel Panel;
-    private static ArrayList<JButton> Ciudades = new ArrayList<>();
+    private String Origen;
+    private static HashMap<JButton, String> mapaBotonCiudad;
+    private static ArrayList<JButton> CiudadesArrayList = new ArrayList<>();
+    private static ArrayList<String> NombresCiudades = new ArrayList<>();
+    public VentanaOrigen(int u){
+
+    }
     public VentanaOrigen() {
-        Ciudades.clear();
+        mapaBotonCiudad = new HashMap<>();
+        Origen = "";
+
+        CiudadesArrayList.clear();
         this.setSize(500, 500);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.setVisible(true);
 
         Panel = new JPanel();
         this.add(Panel);
+
         LlenarCuidades();
         AsignarImagen();
-        for (int i = 0; i < Ciudades.size(); i++) {
-            int index = i;
-            Panel.add(Ciudades.get(index));
-            Ciudades.get(index).addActionListener(new ActionListener() {
+
+        for (int j = 0; j < CiudadesArrayList.size(); j++ ) {
+            mapaBotonCiudad.put(CiudadesArrayList.get(j), NombresCiudades.get(j) ); // Asociamos el botón con la ciudad
+
+            CiudadesArrayList.get(j).addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Ciudades.remove(index);
+                    JButton botonPresionado = (JButton) e.getSource();
+                    String ciudadSeleccionada = mapaBotonCiudad.get(botonPresionado); //  la ciudad asociada al botón
+
+                    Origen = ciudadSeleccionada; //  el nombre de la ciudad seleccionada en la variable Origen
+                    botonPresionado.setVisible(false);
+
                     VentanaOrigen.this.setVisible(false);
-                    //aquí podemos agregar algo para que la ventana sepa las direcciones
                 }
             });
+
+            Panel.add(CiudadesArrayList.get(j));
         }
+        System.out.println(Origen);
     }
 
+
     public void LlenarCuidades() {
-        for (int i = 0; i < 4; i++) {
-            JButton ciudad = new JButton();
-            Ciudades.add(i, ciudad);
+        for(Ciudades ciudad : Ciudades.values()){
+            CiudadesArrayList.add(ciudad.getBotonCiudad());
+            NombresCiudades.add(ciudad.getNombreCiudad());
         }
     }
 
     public void AsignarImagen() {
         ImageIcon concepcion = new ImageIcon("src/main/resources/ConcepcionBton.png");
-            Ciudades.get(0).setIcon(concepcion);
         ImageIcon Chillan = new ImageIcon("src/main/resources/ChillanBton.png");
-            Ciudades.get(1).setIcon(Chillan);
         ImageIcon Santiago = new ImageIcon("src/main/resources/SantiagoBton.png");
-            Ciudades.get(2).setIcon(Santiago);
         ImageIcon Valparaiso = new ImageIcon("src/main/resources/ValparaísoBton.png");
-            Ciudades.get(3).setIcon(Valparaiso);
+
+        CiudadesArrayList.get(0).setIcon(Santiago);
+        CiudadesArrayList.get(1).setIcon(Valparaiso);
+        CiudadesArrayList.get(2).setIcon(concepcion);
+        CiudadesArrayList.get(3).setIcon(Chillan);
     }
 
     public static ArrayList<JButton> getCiudades() {
-        return Ciudades;
+        return CiudadesArrayList;
+    }
+
+    public static HashMap<JButton, String> getMapaBotonCiudad() {
+        return mapaBotonCiudad;
+    }
+
+    public void setMapaBotonCiudad(HashMap<JButton, String> mapaBotonCiudad) {
+        this.mapaBotonCiudad = mapaBotonCiudad;
+    }
+
+    public static ArrayList<String> getNombresCiudades() {
+        return NombresCiudades;
+    }
+
+    public static void setNombresCiudades(ArrayList<String> nombresCiudades) {
+        NombresCiudades = nombresCiudades;
+    }
+
+    public String getOrigen() {
+        return Origen;
     }
 }
