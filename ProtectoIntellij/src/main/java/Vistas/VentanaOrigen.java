@@ -41,7 +41,7 @@ public class VentanaOrigen extends JFrame {
                     JButton botonPresionado = (JButton) e.getSource();
                     String ciudadSeleccionada = mapaBotonCiudad.get(botonPresionado); //  la ciudad asociada al botón
 
-                    Origen = ciudadSeleccionada; //  el nombre de la ciudad seleccionada en la variable Origen
+                    OrigenDestino.Ruta += ciudadSeleccionada; //  el nombre de la ciudad seleccionada en la variable Origen
                     botonPresionado.setVisible(false);
 
                     VentanaOrigen.this.setVisible(false);

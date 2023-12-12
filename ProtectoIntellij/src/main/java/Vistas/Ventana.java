@@ -1,20 +1,24 @@
 package Vistas;
 
+import Codigo.Buses;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.HashMap;
 
 public class Ventana extends JFrame {
     private String Ruta;
     private OrigenDestino origenDestino;
     private VentanaBuses venbu;
-    private VentanaAsientos vena;
     private VentanaAsientos ventanaAsientos;
     private JButton siguiente;
     private JPanel[] paneles = new JPanel[3];
+    private HashMap<JLabel, Buses> mapaLabelBuses;
+    private JLabel LabelSelec;
     private int index = 0;
     public Ventana(){
         this.setLayout(null);
@@ -70,19 +74,17 @@ public class Ventana extends JFrame {
         origenDestino.setVisible(true);
 
 
-        venbu = new VentanaBuses();
-        Ventana.this.add(venbu);
-        venbu.setBounds(0 ,0 ,1200,500);
-        venbu.setVisible(false);
 
 
 
 
 
-        ventanaAsientos = new VentanaAsientos();
-        this.add(ventanaAsientos);
-        ventanaAsientos.setBounds(0 ,0 ,1200,500);
-        ventanaAsientos.setVisible(false);
+
+        //ventanaAsientos = new VentanaAsientos();
+        /*ventanaAsientos.setMapa(mapaLabelBuses);
+        Buses selec = mapaLabelBuses.get(LabelSelec);
+        ventanaAsientos.setBusSelec(selec);*/
+
 
         paneles[0] = origenDestino;
         paneles[1] = venbu;
@@ -100,6 +102,21 @@ public class Ventana extends JFrame {
 
                 // Incrementa el índice al siguiente panel
                 index = (index + 1) % paneles.length;
+                if (index == 1){
+                    venbu = new VentanaBuses(OrigenDestino.Ruta);
+
+                    Ventana.this.add(venbu);
+                    venbu.setBounds(0 ,0 ,1200,500);
+                    paneles[index] = venbu;
+                }
+                if(index == 2){
+                    Buses busSeleccionado = venbu.getBusSeleccionado();
+                    int numeroAsientos = (busSeleccionado != null) ? busSeleccionado.getAsientos() : 0;
+                    ventanaAsientos = new VentanaAsientos(numeroAsientos);
+                    Ventana.this.add(ventanaAsientos);
+                    ventanaAsientos.setBounds(0, 0, 1200, 500);
+                    paneles[index] = ventanaAsientos;
+                }
 
                 // Muestra el siguiente panel
                 paneles[index].setVisible(true);
@@ -116,22 +133,5 @@ public class Ventana extends JFrame {
 
         this.setVisible(true);
     }
-    public void QueAbrir(int aux){
-        if(aux == 1){
-            origenDestino.setVisible(false);
-            venbu.setVisible(true);
-        } else if(aux == 2) {
-            venbu.setVisible(false);
-            ventanaAsientos.setVisible(true);
-        }
-    }
-    public void QueCerra(int aux){
-        if(aux == 1 ){
-            ventanaAsientos.setVisible(false);
-            venbu.setVisible(true);
-        } else if(aux == 2){
-            venbu.setVisible(false);
-            origenDestino.setVisible(true);
-        }
-    }
+
 }

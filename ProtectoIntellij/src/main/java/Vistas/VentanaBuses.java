@@ -10,6 +10,11 @@ import java.util.HashMap;
 import java.util.Random;
 
 public  class VentanaBuses extends JPanel {
+    private BusSelecListener Listener;
+    public void SetBusSelecListener(BusSelecListener listener){
+        this.Listener = listener;
+
+    }
     private ImageIcon logoElige = new ImageIcon("src/main/resources/logoUltimo.png");
     private JButton A;
     private JButton B;
@@ -30,11 +35,11 @@ public  class VentanaBuses extends JPanel {
     private JLabel labelSeleccionado;
     private  Buses busSeleccionado;
 
-    public VentanaBuses(String ruta) {
-        Ruta = ruta;
-    }
 
-    public VentanaBuses() {
+
+    public VentanaBuses(String ruta) {
+        this.Ruta = ruta;
+
 
         //setRuta("Tu valor de Ruta aquí");
 
@@ -63,6 +68,8 @@ public  class VentanaBuses extends JPanel {
                 public void mouseClicked(MouseEvent e) {
                     labelSeleccionado = (JLabel) e.getSource();
                     busSeleccionado = mapaBusLabel.get(labelSeleccionado);
+                    seleccionarBus(busSeleccionado);
+
 
                     // Aquí puedes hacer lo que necesites con el objeto Buses seleccionado
                     System.out.println("JLabel seleccionado: " + labelSeleccionado.getText());
@@ -115,5 +122,10 @@ public  class VentanaBuses extends JPanel {
 
     public  Codigo.Buses getBusSeleccionado() {
         return busSeleccionado;
+    }
+    private void seleccionarBus(Buses Seleccionado) {
+        if (Listener != null) {
+            Listener.busSlec(Seleccionado);
+        }
     }
 }

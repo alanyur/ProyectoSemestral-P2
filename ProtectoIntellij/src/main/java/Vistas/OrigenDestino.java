@@ -11,7 +11,7 @@ public class OrigenDestino extends JPanel {
     private JButton destino;
     private JButton siguiente = new JButton("Siguiente");
     private JLabel logo;
-    private String Ruta;
+    static String Ruta = "";
     private String TextOrigen;
     private String TextDestino;
     public OrigenDestino(){
@@ -24,7 +24,7 @@ public class OrigenDestino extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     VentanaOrigen ventanaOrigen = new VentanaOrigen();
-                    TextOrigen = ventanaOrigen.getOrigen();
+                    //Ruta += ventanaOrigen.getOrigen();
                 }
             });
 
@@ -37,7 +37,7 @@ public class OrigenDestino extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 VentanaDestino ventanaDestino = new VentanaDestino();
-                TextDestino = ventanaDestino.getDestino();
+                //Ruta += "-" + ventanaDestino.getDestino();
             }
         });
 
