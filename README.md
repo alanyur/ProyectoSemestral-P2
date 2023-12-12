@@ -26,6 +26,8 @@
 
 ![image](https://github.com/alanyur/ProyectoSemestral-P2/assets/60883242/d2ace5f7-5084-4e6e-b225-89a4d1e067b1)
 ![image](https://github.com/alanyur/ProyectoSemestral-P2/assets/60883242/ca928965-c0a2-4df8-b85d-0045b938c337)
+![Captura de pantalla 2023-12-12 173219](https://github.com/alanyur/ProyectoSemestral-P2/assets/137654122/b712dfbb-88e4-4ecf-8a74-1af0d6c9f240)
+
 
 ### Desarrollo del Proyecto  
 A lo largo del proyecto, se tomaron tres decisiones fundamentales. En primer lugar, se priorizó la usabilidad diseñando una interfaz intuitiva con tres estados distintos: selección de origen-destino, tipo de bus y asiento.   
