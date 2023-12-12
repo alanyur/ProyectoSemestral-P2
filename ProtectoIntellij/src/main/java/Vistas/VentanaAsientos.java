@@ -17,7 +17,6 @@ public class VentanaAsientos extends JPanel {
     private ImageIcon icon = new ImageIcon ("src/main/resources/asientos.png");
     private ImageIcon icon2 = new ImageIcon ("src/main/resources/asientopremium.png");
     private static JButton[] sillas;
-    private JButton botonci;
     private JLabel labelSeleccionado;
     private VentanaBuses ventanaBuses;
     private Buses busSelec;
@@ -25,9 +24,6 @@ public class VentanaAsientos extends JPanel {
     public VentanaAsientos(){
         ventanaBuses = new VentanaBuses();
         ventanaBuses.setVisible(false);
-        //podriamos poner aca un parametro que estara dado por las otras ventanas
-       /* botonci = new JButton("prueba");
-        this.add(botonci); */
         //while (busSelec == null){
             this.busSelec = ventanaBuses.getBusSeleccionado();
 

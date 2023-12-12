@@ -93,6 +93,7 @@ public class Ventana extends JFrame {
         this.add(siguiente);
         siguiente.setBounds(1000,500,100,100);
         siguiente.addActionListener(new ActionListener() {
+            int h=0;
             @Override
             public void actionPerformed(ActionEvent e) {
                 paneles[index].setVisible(false);
@@ -102,6 +103,10 @@ public class Ventana extends JFrame {
 
                 // Muestra el siguiente panel
                 paneles[index].setVisible(true);
+                h++;
+                if(h>2){
+                    System.exit(0);
+                }
 
             }
         });
