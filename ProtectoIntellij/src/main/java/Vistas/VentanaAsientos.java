@@ -12,84 +12,104 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class VentanaAsientos extends JPanel {
-    private BusC bus; //aqui debo hacer algo para que cambie segun el boton a pulsar
-    private ImageIcon icon = new ImageIcon ("src/main/resources/asientos.png");
-    private ImageIcon icon2 = new ImageIcon ("src/main/resources/asientopremium.png");
-    private static JButton[] sillas;
-    private JLabel labelSeleccionado;
-    private VentanaBuses ventanaBuses;
-    private Buses busSelec;
-    private HashMap<JLabel, Buses> mapa;
-    public VentanaAsientos(){
-        ventanaBuses = new VentanaBuses();
-        ventanaBuses.setVisible(false);
-        //while (busSelec == null){
-            this.busSelec = ventanaBuses.getBusSeleccionado();
+        public class VentanaAsientos extends JPanel implements BusSelecListener{
+            private BusC bus; //aqui debo hacer algo para que cambie segun el boton a pulsar
+            private ImageIcon icon = new ImageIcon ("src/main/resources/asientos.png");
+            private ImageIcon icon2 = new ImageIcon ("src/main/resources/asientopremium.png");
+            private static JButton[] sillas;
+            private JLabel labelSeleccionado;
+            private VentanaBuses ventanaBuses;
+            private Buses busSelec;
+            private HashMap<JLabel, Buses> mapa;
+            int NumeroDeAsientos = 0;
+            public VentanaAsientos(int n){
+                this.NumeroDeAsientos = n;
+                ventanaBuses = new VentanaBuses(OrigenDestino.Ruta);
+                ventanaBuses.setVisible(false);
+                ventanaBuses.SetBusSelecListener(this);
 
-        //}
-        bus = new BusC();
-        int x = bus.getAsientos();
-        //int x = busSelec.getAsientos();
-        int y= 0;
-        int w=0;
-        int v=0;
-        int z= 0;
-        sillas = new JButton[x];
-        setLayout(null);
-        this.setBackground(new Color(66, 10, 127));
-        for(int i=0; i<x;i++) {
-            z=i;
-            Image imagenOriginal = (i < x / 2) ? icon.getImage() : icon2.getImage();
-            Image imagenEscalada = imagenOriginal.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-            ImageIcon iconEscalado = new ImageIcon(imagenEscalada);
-        sillas[i]= new JButton(iconEscalado);
-        if(bus.getPisos()==1) {
-            if (i < x / 2) {
-                sillas[i].setBounds(0, i * 25, 20, 20);
-            } else {
-                sillas[i].setBounds(40, y * 25, 20, 20);
-                y++;
+                Buses busSeleccionado = ventanaBuses.getBusSeleccionado();
+                if (busSeleccionado != null) {
+                    busSlec(busSeleccionado);
+                }
+
+
+
+                bus = new BusC();
+                //int NumeroDeAsientos = bus.getAsientos();
+
+                int y= 0;
+                int w=0;
+                int v=0;
+                int z= 0;
+                sillas = new JButton[NumeroDeAsientos];
+                setLayout(null);
+                this.setBackground(new Color(66, 10, 127));
+                for(int i=0; i<NumeroDeAsientos;i++) {
+                    z=i;
+                    Image imagenOriginal = (i < NumeroDeAsientos / 2) ? icon.getImage() : icon2.getImage();
+                    Image imagenEscalada = imagenOriginal.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+                    ImageIcon iconEscalado = new ImageIcon(imagenEscalada);
+                sillas[i]= new JButton(iconEscalado);
+                if(bus.getPisos()==1) {
+                    if (i < NumeroDeAsientos / 2) {
+                        sillas[i].setBounds(0, i * 25, 20, 20);
+                    } else {
+                        sillas[i].setBounds(40, y * 25, 20, 20);
+                        y++;
+                    }
+
+                }
+                if(bus.getPisos()==2){
+                    if (i < NumeroDeAsientos / 4) {
+                        sillas[i].setBounds(0, i * 25, 20, 20);
+                    } else if(i < NumeroDeAsientos /2)  {
+                        sillas[i].setBounds(40, y * 25, 20, 20);
+                        y++;}
+                    else if(i < NumeroDeAsientos *3/4)  {
+                        sillas[i].setBounds(80, w * 25, 20, 20);
+                        w++;}
+                    else   {
+                        sillas[i].setBounds(120, v * 25, 20, 20);
+                        v++;}
+                    }
+                    int finalZ = z;
+                if(i < NumeroDeAsientos /2) {
+                    sillas[i].addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            System.out.print("en el asiento" + finalZ);
+                        }
+                    });
+                    //tengo que cambiarle el tamaño a la imagen
+                    this.add(sillas[i]);
+                 }
+                else{
+                    sillas[i].addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            System.out.print("en el asiento (premium) " + finalZ);
+                        }
+                    });
+                    //tengo que cambiarle el tamaño a la imagen
+                    this.add(sillas[i]);
+                }
+                }
             }
 
-        }
-        if(bus.getPisos()==2){
-            if (i < x / 4) {
-                sillas[i].setBounds(0, i * 25, 20, 20);
-            } else if(i < x /2)  {
-                sillas[i].setBounds(40, y * 25, 20, 20);
-                y++;}
-            else if(i < x *3/4)  {
-                sillas[i].setBounds(80, w * 25, 20, 20);
-                w++;}
-            else   {
-                sillas[i].setBounds(120, v * 25, 20, 20);
-                v++;}
+            public void setBusSelec(Buses busSelec) {
+                this.busSelec = busSelec;
             }
-            int finalZ = z;
-        if(i < x /2) {
-            sillas[i].addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    System.out.print("en el asiento" + finalZ);
-                }
-            });
-            //tengo que cambiarle el tamaño a la imagen
-            this.add(sillas[i]);
-         }
-        else{
-            sillas[i].addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    System.out.print("en el asiento (premium) " + finalZ);
-                }
-            });
-            //tengo que cambiarle el tamaño a la imagen
-            this.add(sillas[i]);
-        }
-        }
-    /*for(int i=0; i<bus.getAsientos();i++) {
 
-        }*/
-    }
-}
+            public void setMapa(HashMap<JLabel, Buses> mapa) {
+                this.mapa = mapa;
+            }
+
+            @Override
+            public void busSlec(Buses bus) {
+                this.busSelec = bus;
+                NumeroDeAsientos = busSelec.getAsientos();
+                System.out.println(busSelec.getAsientos());
+                sillas = new JButton[NumeroDeAsientos];
+            }
+        }
