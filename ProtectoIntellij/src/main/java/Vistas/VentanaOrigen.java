@@ -8,6 +8,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * VentanaOrigen: JFrame que sirve para seleccionar la cuidad de origen del pasajero
+ * Esta clase implementa parte de la ruta en VentanaBuses
+ *
+ */
 public class VentanaOrigen extends JFrame {
     private JPanel Panel;
     private String Origen;
