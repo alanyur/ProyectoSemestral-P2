@@ -12,6 +12,15 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * VentanaAsientos es un JPanel que se instancia en el JFrame Ventana
+ * que dependiendo de lo elegido anteriormente mostrará una cantidad
+ * específica de asientos (algunos premium) para ser seleccionados
+ * los cuales a la hora de ser seleccionados mostrarán por la terminal que fueron
+ * seleccionados
+ * @author Alan Yuren Ibacache Gonnelli
+ * @author Juan Agustín Umaña Silva
+ */
         public class VentanaAsientos extends JPanel implements BusSelecListener{
             private BusC bus; //aqui debo hacer algo para que cambie segun el boton a pulsar
             private ImageIcon icon = new ImageIcon ("src/main/resources/asientos.png");

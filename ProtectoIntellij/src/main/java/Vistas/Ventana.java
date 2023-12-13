@@ -10,6 +10,15 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
 
+/**
+ * Ventana genera un JFrame con instancias de diferentes tipos de ventanas
+ * (OrigenDestino, Buses, Asientos, etc.) y un JPanel con un botón el cual
+ * las irá cambiando (o cerrara el JFrame en caso de que sea el último tipo
+ * de ventana por elegir)
+ * @author Alan Yuren Ibacache Gonnelli
+ * @author Juan Agustín Umaña Silva
+ */
+
 public class Ventana extends JFrame {
     private String Ruta;
     private OrigenDestino origenDestino;

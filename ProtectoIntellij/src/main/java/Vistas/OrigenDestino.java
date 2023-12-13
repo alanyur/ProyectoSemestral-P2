@@ -5,6 +5,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * El JPanel OrigenDestino genera en el JFrame Ventana botones de Origen y Destino que
+ * al presionarlos se generan nuevas ventanas con 4 posibles lugares de origen
+ * y 3 posibles lugares de destino (no se considera el mismo lugar de origen como
+ * destino)
+ * @author Alan Yuren Ibacache Gonnelli
+ * @author Juan Agustín Umaña Silva
+ */
+
 public class OrigenDestino extends JPanel {
     private ImageIcon icon = new ImageIcon("src/main/resources/logo1(1).png");
     private JButton origen;
