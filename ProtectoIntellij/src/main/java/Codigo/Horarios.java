@@ -2,6 +2,8 @@ package Codigo;
 
 /**
  * Horarios: enum que representa los horarios en los que sale cada bus desde 08:00AM hasta 22:00PM
+ *  @ Juan Agustin Umaña Silva
+ *   @ Alan Yuren Ibacache Gonelli
  */
 public enum Horarios {
     HORA_8("08:00AM"),

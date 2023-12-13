@@ -8,6 +8,8 @@ import java.util.ArrayList;
 /**
  * VentanaDestino: JFrame que funciona para seleccionar cual sera la cuidad de destino del pasajero
  * Hace una instancia de VentanaOrigen para poder saber que cuidad se elegio como origen.
+ * @ Juan Agustin Umaña Silva
+ * @ Alan Yuren Ibacache Gonelli
  */
 public class VentanaDestino extends JFrame {
     private JPanel Panel;

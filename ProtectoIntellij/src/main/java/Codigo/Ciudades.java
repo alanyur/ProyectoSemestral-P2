@@ -8,6 +8,8 @@ import java.util.HashMap;
 /**
  * Ciudades: Enum de cuidades disponibles para elegir como origen o destino,
  * ademas de asociar un boton para cada ciudad
+ * @ Juan Agustin Umaña Silva
+ * @ Alan Yuren Ibacache Gonelli
  */
 public enum Ciudades {
     SANTIAGO("Santiago"),

@@ -11,7 +11,8 @@ import java.util.HashMap;
 /**
  * VentanaOrigen: JFrame que sirve para seleccionar la cuidad de origen del pasajero
  * Esta clase implementa parte de la ruta en VentanaBuses
- *
+ * @ Juan Agustin Umaña Silva
+ * @ Alan Yuren Ibacache Gonelli
  */
 public class VentanaOrigen extends JFrame {
     private JPanel Panel;
