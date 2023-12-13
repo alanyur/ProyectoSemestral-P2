@@ -5,6 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ *El JPanel Botones genera el botón "Siguiente" en el JFrame Ventana
+ * @author Alan Yuren Ibacache Gonnelli
+ * @author Juan Agustín Umaña Silva
+ */
+
 public class Botones extends JPanel {
     private int count1 = 0, count2 = 0;
     private JButton siguiente = new JButton("Siguiente");

@@ -9,6 +9,13 @@ import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * VentanaBuses es un JPanel que dependiendo de lo seleccionado anteriormente
+ * se instancia en el JFrame Ventana con una cantidad de buses (JLabels) con una ruta
+ * específica (la seleccionada) que son seleccionables
+ * @author Alan Yuren Ibacache Gonnelli
+ * @author Juan Agustín Umaña Silva
+ */
 public  class VentanaBuses extends JPanel {
     private BusSelecListener Listener;
     public void SetBusSelecListener(BusSelecListener listener){
