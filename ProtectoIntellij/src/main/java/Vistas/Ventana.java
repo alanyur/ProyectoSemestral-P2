@@ -27,7 +27,7 @@ public class Ventana extends JFrame {
     private JButton siguiente;
     private JPanel[] paneles = new JPanel[3];
     private HashMap<JLabel, Buses> mapaLabelBuses;
-    private JLabel LabelSelec;
+    private JLabel Pasaje;
     private int index = 0;
     public Ventana(){
         this.setLayout(null);
@@ -102,7 +102,8 @@ public class Ventana extends JFrame {
 
         siguiente = new JButton("Siguiente");
         this.add(siguiente);
-        siguiente.setBounds(1000,500,100,100);
+        siguiente.setBounds(1000,500,150,100);
+        siguiente.setFont(new Font("Arial", Font.BOLD,20));
         siguiente.addActionListener(new ActionListener() {
             int h=0;
             @Override

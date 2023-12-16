@@ -3,6 +3,7 @@ package Vistas;
 import Codigo.*;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -41,6 +42,7 @@ public  class VentanaBuses extends JPanel {
     private HashMap<JLabel, Buses> mapaBusLabel = new HashMap<>();
     private JLabel labelSeleccionado;
     private  Buses busSeleccionado;
+    private Border borde = BorderFactory.createLineBorder(new Color(0x7C8284), 2);
 
 
 
@@ -55,7 +57,7 @@ public  class VentanaBuses extends JPanel {
 
 
         horariosArray = Horarios.values();
-        this.setBackground(new Color(6, 0, 27));
+        this.setBackground(new Color(0x083563));
         setLayout(new GridLayout(2,1));
 
         /*A = new JButton("");
@@ -70,20 +72,44 @@ public  class VentanaBuses extends JPanel {
 
         for(int i = 0; i < buses.length; i++) {
             buses[i] = new JLabel();
+            int finalI = i;
             buses[i].addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     labelSeleccionado = (JLabel) e.getSource();
                     busSeleccionado = mapaBusLabel.get(labelSeleccionado);
                     seleccionarBus(busSeleccionado);
+                    JLabel label = (JLabel) e.getSource();
+                    label.setBackground(new Color(0xEEA31D));
+                    label.setOpaque(true);
+                    label.repaint();
 
 
                     // Aquí puedes hacer lo que necesites con el objeto Buses seleccionado
                     System.out.println("JLabel seleccionado: " + labelSeleccionado.getText());
                     System.out.println("Objeto Buses asociado: " + busSeleccionado.getAsientos());
                 }
+
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    super.mouseEntered(e);
+                    JLabel label = (JLabel) e.getSource();
+                    label.setBackground(new Color(0xEEA31D));
+                    label.setOpaque(true);
+                    label.repaint();
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    super.mouseExited(e);
+                    JLabel label = (JLabel) e.getSource();
+                    label.setBackground(new Color(0x083563));
+                    label.setOpaque(true);
+                    label.repaint();
+                }
             });
             this.add(buses[i]);
+            LabelEstilos(buses[i]);
         }
         atributos();
     }
@@ -105,7 +131,7 @@ public  class VentanaBuses extends JPanel {
 
             buses[i].setSize(1200,500);
 
-            String labelText = "<html><font color='red'><b>Ruta:</b> " + Ruta + "<br><b>Horario de Salida:</b> " + horario + "<br><b>Numero de Asientos: </b> " + Integer.toString(asientos) ;
+            String labelText = "<html><font color='black'><b>Ruta:</b> " + Ruta + "<br><b>Horario de Salida:</b> " + horario + "<br><b>Numero de Asientos: </b> " + Integer.toString(asientos) ;
 
 
 
@@ -134,5 +160,11 @@ public  class VentanaBuses extends JPanel {
         if (Listener != null) {
             Listener.busSlec(Seleccionado);
         }
+    }
+    public void LabelEstilos( JLabel jLabel ){
+           jLabel.setBackground(new Color(238, 163, 29));
+           jLabel.setForeground(new Color(0,0,0));
+           jLabel.setFont(new Font("Arial", Font.BOLD, 15));
+           jLabel.setBorder(borde);
     }
 }
