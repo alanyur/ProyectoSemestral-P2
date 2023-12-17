@@ -25,13 +25,22 @@ public class Ventana extends JFrame {
     private VentanaBuses venbu;
     private VentanaAsientos ventanaAsientos;
     private JButton siguiente;
-    private JPanel[] paneles = new JPanel[3];
+    private JButton anterior;
+    private JPanel[] paneles = new JPanel[4];
     private HashMap<JLabel, Buses> mapaLabelBuses;
     private JLabel LabelSelec;
     private int index = 0;
-    public Ventana(){
+    public Ventana() {
+        CaretakerBu caretakerBu = new CaretakerBu();
+        CaretakerOd caretakerOd = new CaretakerOd();
+        //CaretakerOR caretakerOR = new CaretakerOR();
+        //CaretakerDE caretakerDE = new CaretakerDE();
+        OriginatorBu originatorBu = new OriginatorBu();
+        OriginatorOd originatorOd = new OriginatorOd();
+        //OriginatorOR originatorOR = new OriginatorOR();
+        //OriginatorDE originatorDE = new OriginatorDE();
         this.setLayout(null);
-        this.setBounds(0,0,1200,700);
+        this.setBounds(0, 0, 1200, 700);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
 
@@ -79,13 +88,18 @@ public class Ventana extends JFrame {
         origenDestino = new OrigenDestino();
         String Or = origenDestino.getRuta();
         this.add(origenDestino);
-        origenDestino.setBounds(0 ,0 ,1200,500);
+        origenDestino.setBounds(0, 0, 1200, 500);
         origenDestino.setVisible(true);
+        originatorOd.setEstado(origenDestino); //se guarda el estado de esta ventana
+        CaretakerOd.addmementoOd(originatorOd.guardar());//se utiliza para recuperarlo más tarde
+        originatorBu.setEstado(venbu); //puede que tenga que ubicarlo despues del listener de aceptar
+        CaretakerBu.addmementoBus(originatorBu.guardar());
 
 
-
-
-
+        //originatorOR.setEstado(origenDestino.getOrigen());
+        //CaretakerOR.addmementoOR(originatorOR.guardar());
+        //originatorDE.setEstado(origenDestino.getDestino());
+        //CaretakerDE.addmementoDE(originatorDE.guardar());
 
 
 
@@ -104,13 +118,12 @@ public class Ventana extends JFrame {
         this.add(siguiente);
         siguiente.setBounds(1000,500,100,100);
         siguiente.addActionListener(new ActionListener() {
-            int h=0;
             @Override
             public void actionPerformed(ActionEvent e) {
                 paneles[index].setVisible(false);
 
                 // Incrementa el índice al siguiente panel
-                index = (index + 1) % paneles.length;
+                index = (index + 1) % paneles.length;//circular increment
                 if (index == 1){
                     venbu = new VentanaBuses(OrigenDestino.Ruta);
 
@@ -126,20 +139,47 @@ public class Ventana extends JFrame {
                     ventanaAsientos.setBounds(0, 0, 1200, 500);
                     paneles[index] = ventanaAsientos;
                 }
-
-                // Muestra el siguiente panel
-                paneles[index].setVisible(true);
-                h++;
-                if(h>2){
+                if (index == 3){
                     System.exit(0);
                 }
+                // Muestra el siguiente panel
+                paneles[index].setVisible(true);
+
 
             }
         });
+        anterior = new JButton("Anterior");
+        this.add(anterior);
+        anterior.setBounds(100,500,100,100);
+        anterior.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Restaura el estado del panel actual al estado anterior
+                if(index==1) { //aqui se devuelve al primer apartado (pero los botones no son parte de este (creo))
+                    //creo que hay que hacer memento para ventana destino y ventana origen
+                    originatorOd.restaurar(caretakerOd.getmementoOd(0));
+                    origenDestino.resetorigen();
+                    //originatorOR.restaurar(caretakerOR.getmementoOR(0));
+                    //originatorDE.restaurar(caretakerDE.getmementoDE(0));
+                }
+                if(index==2) {
+                    originatorBu.restaurar(caretakerBu.getmementobu(0));
+                }
+                if(index==0){
+                    System.exit(0);
+                }
+                // Oculta el panel actual
+                paneles[index].setVisible(false);
+
+                // Actualiza el índice al panel anterior
+                index = (index - 1 + paneles.length) % paneles.length; //circular decrement
+
+                // Muestra el panel anterior
+                paneles[index].setVisible(true);
 
 
-
-
+            }
+        });
         this.setVisible(true);
     }
 

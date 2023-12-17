@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 public class Botones extends JPanel {
     private int count1 = 0, count2 = 0;
     private JButton siguiente = new JButton("Siguiente");
-    private JButton Volver = new JButton("Volver");
+    private JButton Volver = new JButton("Volver"); //estos no se ocupan
     private JLabel derecho = new JLabel();
     private JLabel izquierdo = new JLabel();
 

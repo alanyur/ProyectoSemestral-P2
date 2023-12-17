@@ -18,12 +18,18 @@ public class OrigenDestino extends JPanel {
     private ImageIcon icon = new ImageIcon("src/main/resources/logo1(1).png");
     private JButton origen;
     private JButton destino;
-    private JButton siguiente = new JButton("Siguiente");
+    private JButton siguiente = new JButton("Siguiente"); //borra esto, no se ocupa
     private JLabel logo;
     static String Ruta = "";
     private String TextOrigen;
     private String TextDestino;
+    private VentanaOrigen ventanaOrigen;
+    private VentanaDestino ventanaDestino;
+    private OriginatorOR originatorOR;
+    private CaretakerOR caretakerOR;
+
     public OrigenDestino(){
+
         this.setLayout(new FlowLayout());
         this.setBackground(new Color(61, 100, 227));
 
@@ -32,10 +38,16 @@ public class OrigenDestino extends JPanel {
             origen.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    VentanaOrigen ventanaOrigen = new VentanaOrigen();
+                     ventanaOrigen = new VentanaOrigen();
                     //Ruta += ventanaOrigen.getOrigen();
+                     caretakerOR = new CaretakerOR();
+                     originatorOR = new OriginatorOR();
+                    originatorOR.setEstado(ventanaOrigen);
+                    CaretakerOR.addmementoOR(originatorOR.guardar());
                 }
             });
+        //originatorOR.setEstado(ventanaOrigen);
+        //CaretakerOR.addmementoOR(originatorOR.guardar());
 
         logo = new JLabel(icon);
         this.add(logo);
@@ -45,7 +57,7 @@ public class OrigenDestino extends JPanel {
         destino.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                VentanaDestino ventanaDestino = new VentanaDestino();
+                 ventanaDestino = new VentanaDestino();
                 //Ruta += "-" + ventanaDestino.getDestino();
             }
         });
@@ -53,8 +65,20 @@ public class OrigenDestino extends JPanel {
 
 
     }
-
+    public void resetorigen(){
+        originatorOR.restaurar(caretakerOR.getmementoOR(0));
+    }
+    public void resetdestino(){
+    }
     public String getRuta() {
         return Ruta;
+    }
+
+    public VentanaOrigen getOrigen() {
+        return ventanaOrigen;
+    }
+
+    public VentanaDestino getDestino() {
+        return ventanaDestino;
     }
 }

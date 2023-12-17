@@ -30,7 +30,7 @@ public  class VentanaBuses extends JPanel {
     private BusB busB = new BusB();
     private BusC busC = new BusC();
     private Buses[] Buses = new Buses[3];
-    private VentanaOrigen ventanaOrigen;
+    private VentanaOrigen ventanaOrigen; //creo que esto se puede borrar pq no se ocupa?
     private VentanaDestino ventanaDestino;
     private JLabel LOGO;
     private JLabel[] buses = new JLabel[5];
@@ -79,7 +79,7 @@ public  class VentanaBuses extends JPanel {
 
 
                     // Aquí puedes hacer lo que necesites con el objeto Buses seleccionado
-                    System.out.println("JLabel seleccionado: " + labelSeleccionado.getText());
+                    //System.out.println("JLabel seleccionado: " + labelSeleccionado.getText());
                     System.out.println("Objeto Buses asociado: " + busSeleccionado.getAsientos());
                 }
             });

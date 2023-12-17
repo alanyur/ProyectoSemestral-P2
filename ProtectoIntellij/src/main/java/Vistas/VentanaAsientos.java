@@ -29,9 +29,13 @@ import java.util.HashMap;
             private JLabel labelSeleccionado;
             private VentanaBuses ventanaBuses;
             private Buses busSelec;
+            int[] asientos = new int[60];
             private HashMap<JLabel, Buses> mapa;
             int NumeroDeAsientos = 0;
             public VentanaAsientos(int n){
+                for(int b=0; b<60; b++){
+                    asientos[b]=0;
+                }
                 this.NumeroDeAsientos = n;
                 ventanaBuses = new VentanaBuses(OrigenDestino.Ruta);
                 ventanaBuses.setVisible(false);
@@ -84,20 +88,34 @@ import java.util.HashMap;
                     }
                     int finalZ = z;
                 if(i < NumeroDeAsientos /2) {
+                    int finalI = i;
                     sillas[i].addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            System.out.print("en el asiento" + finalZ);
+                            if(asientos[finalI]==0) {
+                                System.out.print("en el asiento " + finalZ + " " );
+                                asientos[finalI]=1;
+                            }
+                            else{
+                                System.out.print("usted ya compró el asiento " + finalZ+ " " );
+                            }
                         }
                     });
                     //tengo que cambiarle el tamaño a la imagen
                     this.add(sillas[i]);
                  }
                 else{
+                    int finalI = i;
                     sillas[i].addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            System.out.print("en el asiento (premium) " + finalZ);
+                            if (asientos[finalI] == 0) {
+                                System.out.print("en el asiento (premium) " + finalZ+ " " );
+                                asientos[finalI]=1;
+                            }
+                            else{
+                                System.out.print("usted ya compró el asiento " + finalZ+ " " );
+                            }
                         }
                     });
                     //tengo que cambiarle el tamaño a la imagen
