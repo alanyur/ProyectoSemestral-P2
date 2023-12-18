@@ -19,10 +19,6 @@ import java.util.Random;
  */
 public  class VentanaBuses extends JPanel {
     private BusSelecListener Listener;
-    public void SetBusSelecListener(BusSelecListener listener){
-        this.Listener = listener;
-
-    }
     private ImageIcon logoElige = new ImageIcon("src/main/resources/logoUltimo.png");
     private BusA bus1 = new BusA();
     private BusB bus2 = new BusB();
@@ -35,7 +31,6 @@ public  class VentanaBuses extends JPanel {
     private Horarios[] horariosArray = {Horarios.HORA_8, Horarios.HORA_10,Horarios.HORA_12, Horarios.HORA_14, Horarios.HORA_16};
     private String Ruta;
     private String horario;
-    private Random random = new Random();
     private HashMap<JLabel, Buses> mapaBusLabel = new HashMap<>();
     private JLabel labelSeleccionado;
     private  Buses busSeleccionado;
@@ -57,15 +52,6 @@ public  class VentanaBuses extends JPanel {
         this.setBackground(new Color(0x083563));
         setLayout(new GridLayout(2,1));
 
-        /*A = new JButton("");
-        this.add(A);
-
-        B = new JButton("B");
-        this.add(B);
-
-        C = new JButton("C");
-        this.add(C);*/
-
 
         for(int i = 0; i < buses.length; i++) {
             buses[i] = new JLabel();
@@ -83,7 +69,7 @@ public  class VentanaBuses extends JPanel {
 
 
                     // Aquí puedes hacer lo que necesites con el objeto Buses seleccionado
-                    System.out.println("JLabel seleccionado: " + labelSeleccionado.getText());
+                    //System.out.println("JLabel seleccionado: " + labelSeleccionado.getText());
                     System.out.println("Objeto Buses asociado: " + busSeleccionado.getAsientos());
                 }
 
@@ -109,6 +95,9 @@ public  class VentanaBuses extends JPanel {
             LabelEstilos(buses[i]);
         }
         atributos();
+    }
+    public Buses getBus(){
+        return busSeleccionado;
     }
     public void atributos(){
         Buses[0] = bus1;
@@ -137,6 +126,9 @@ public  class VentanaBuses extends JPanel {
 
     public void setRuta(String ruta) {
         Ruta = ruta;
+    }
+    public String getRuta(){
+        return Ruta;
     }
 
     public JLabel getLabelSeleccionado() {

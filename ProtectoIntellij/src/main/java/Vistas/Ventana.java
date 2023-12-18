@@ -20,71 +20,44 @@ import java.util.HashMap;
  */
 
 public class Ventana extends JFrame {
-    private String Ruta;
+    private JFrame error;
+    private JTextField textoerror;
     private OrigenDestino origenDestino;
     private VentanaBuses venbu;
     private VentanaAsientos ventanaAsientos;
     private JButton siguiente;
-    private JPanel[] paneles = new JPanel[3];
+    private JButton anterior;
+    private JPanel[] paneles = new JPanel[4];
     private HashMap<JLabel, Buses> mapaLabelBuses;
     private JLabel Pasaje;
     private int index = 0;
-    public Ventana(){
+    public Ventana() {
+        CaretakerBu caretakerBu = new CaretakerBu();
+        CaretakerOd caretakerOd = new CaretakerOd();
+        //CaretakerOR caretakerOR = new CaretakerOR();
+        //CaretakerDE caretakerDE = new CaretakerDE();
+        OriginatorBu originatorBu = new OriginatorBu();
+        OriginatorOd originatorOd = new OriginatorOd();
+        //OriginatorOR originatorOR = new OriginatorOR();
+        //OriginatorDE originatorDE = new OriginatorDE();
         this.setLayout(null);
-        this.setBounds(0,0,1200,700);
+        this.setBounds(0, 0, 1200, 700);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
-
-         /*vena = new VentanaAsientos();
-        this.add(vena);
-        vena.setBounds(0 ,0 ,1200,500);
-        vena.setVisible(true); */
-        /*
-        venbu = new VentanaBuses();
-        this.add(venbu);
-        venbu.setBounds(0 ,0 ,1200,500);
-        venbu.setVisible(true); */
-
-
-        /*this.add(botones);
-        botones.setBounds(0,500,1200,200);
-        botones.setVisible(true);
-        botones.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                QueAbrir(botones.getCount1());
-                QueCerra(botones.getCount2());
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });*/
         origenDestino = new OrigenDestino();
         this.add(origenDestino);
-        origenDestino.setBounds(0 ,0 ,1200,500);
+        origenDestino.setBounds(0, 0, 1200, 500);
         origenDestino.setVisible(true);
+        originatorOd.setEstado(origenDestino); //se guarda el estado de esta ventana
+        CaretakerOd.addmementoOd(originatorOd.guardar());//se utiliza para recuperarlo más tarde
+        originatorBu.setEstado(venbu); //puede que tenga que ubicarlo despues del listener de aceptar
+        CaretakerBu.addmementoBus(originatorBu.guardar());
 
 
-
-
-
+        //originatorOR.setEstado(origenDestino.getOrigen());
+        //CaretakerOR.addmementoOR(originatorOR.guardar());
+        //originatorDE.setEstado(origenDestino.getDestino());
+        //CaretakerDE.addmementoDE(originatorDE.guardar());
 
 
 
@@ -104,42 +77,74 @@ public class Ventana extends JFrame {
         siguiente.setBounds(1000,500,150,100);
         siguiente.setFont(new Font("Arial", Font.BOLD,20));
         siguiente.addActionListener(new ActionListener() {
-            int h=0;
             @Override
             public void actionPerformed(ActionEvent e) {
-                paneles[index].setVisible(false);
+                    paneles[index].setVisible(false);
 
-                // Incrementa el índice al siguiente panel
-                index = (index + 1) % paneles.length;
-                if (index == 1){
-                    venbu = new VentanaBuses(OrigenDestino.Ruta);
+                    // Incrementa el índice al siguiente panel
+                    index = (index + 1) % paneles.length;//circular increment
+                    if (index == 1) {
+                        venbu = new VentanaBuses(OrigenDestino.Ruta);
 
-                    Ventana.this.add(venbu);
-                    venbu.setBounds(0 ,0 ,1200,500);
-                    paneles[index] = venbu;
-                }
-                if(index == 2){
-                    Buses busSeleccionado = venbu.getBusSeleccionado();
-                    int numeroAsientos = (busSeleccionado != null) ? busSeleccionado.getAsientos() : 0;
-                    ventanaAsientos = new VentanaAsientos(numeroAsientos);
-                    Ventana.this.add(ventanaAsientos);
-                    ventanaAsientos.setBounds(0, 0, 1200, 500);
-                    paneles[index] = ventanaAsientos;
-                }
-
-                // Muestra el siguiente panel
-                paneles[index].setVisible(true);
-                h++;
-                if(h>2){
-                    System.exit(0);
-                }
+                        Ventana.this.add(venbu);
+                        venbu.setBounds(0, 0, 1200, 500);
+                        paneles[index] = venbu;
+                        anterior.setVisible(true);
+                    }
+                    if (index == 2) {
+                        Buses busSeleccionado = venbu.getBusSeleccionado();
+                        int numeroAsientos = (busSeleccionado != null) ? busSeleccionado.getAsientos() : 0;
+                        ventanaAsientos = new VentanaAsientos(numeroAsientos,venbu.getBus());
+                        Ventana.this.add(ventanaAsientos);
+                        ventanaAsientos.setBounds(0, 0, 1200, 500);
+                        paneles[index] = ventanaAsientos;
+                        siguiente.setText("Finalizar");
+                    }
+                    if (index == 3) {
+                        System.exit(0);
+                    }
+                    // Muestra el siguiente panel
+                    paneles[index].setVisible(true);
 
             }
         });
+        anterior = new JButton("Anterior");
+        this.add(anterior);
+        anterior.setBounds(100,500,100,100);
+        anterior.setVisible(false);
+        anterior.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Restaura el estado del panel actual al estado anterior
+                if(index==1) { //aqui se devuelve al primer apartado (pero los botones no son parte de este (creo))
+                    //creo que hay que hacer memento para ventana destino y ventana origen
+                    originatorOd.restaurar(caretakerOd.getmementoOd(0));
+                    //origenDestino.resetorigen();
+                    //originatorOR.restaurar(caretakerOR.getmementoOR(0));
+                    //originatorDE.restaurar(caretakerDE.getmementoDE(0));
+                    anterior.setVisible(false);
+                    //origenDestino.getOrigen().reiniciarCiudades();
+                    origenDestino = new OrigenDestino();
+                }
+                if(index==2) {
+                    originatorBu.restaurar(caretakerBu.getmementobu(0));
+                    siguiente.setText("Siguiente");
+                }
+                if(index==0){
+                    System.exit(0);
+                }
+                // Oculta el panel actual
+                paneles[index].setVisible(false);
+
+                // Actualiza el índice al panel anterior
+                index = (index - 1 + paneles.length) % paneles.length; //circular decrement
+
+                // Muestra el panel anterior
+                paneles[index].setVisible(true);
 
 
-
-
+            }
+        });
         this.setVisible(true);
     }
 

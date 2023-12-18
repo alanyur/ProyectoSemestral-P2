@@ -19,7 +19,8 @@ public class VentanaDestino extends JFrame {
     private String Destino;
     public VentanaDestino(){
         Destino = "";
-
+        //OriginatorDE originatorDE = new OriginatorDE();
+        //CaretakerDE caretakerDE = new CaretakerDE();
         this.setSize(500,500);
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.setVisible(true);
@@ -38,11 +39,6 @@ public class VentanaDestino extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JButton botonPresionado = (JButton) e.getSource();
-                    /*String ciudadSeleccionada = VentanaOrigen.getMapaBotonCiudad().get(botonPresionado);
-                    OrigenDestino.Ruta += "-" + ciudadSeleccionada;
-                    System.out.println(OrigenDestino.Ruta);
-                    System.out.println(ciudadSeleccionada);*/
-
                     VentanaDestino.this.setVisible(false);
                     //aquí podemos agregar algo para que la ventana sepa las direcciones
                 }

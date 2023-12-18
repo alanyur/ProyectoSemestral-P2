@@ -42,12 +42,14 @@ public class VentanaOrigen extends JFrame {
             CiudadesArrayList.get(j).addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+
                     JButton botonPresionado = (JButton) e.getSource();
                     String ciudadSeleccionada = mapaBotonCiudad.get(botonPresionado); //  la ciudad asociada al botón
 
                     OrigenDestino.Ruta += ciudadSeleccionada; //  el nombre de la ciudad seleccionada en la variable Origen
+                    //originatorOrigen.setEstado(ciudadSeleccionada);
+                    //caretakerOrigen.addmementoOrigen(originatorOrigen.guardar());
                     botonPresionado.setVisible(false);
-
                     VentanaOrigen.this.setVisible(false);
                 }
             });
@@ -64,6 +66,13 @@ public class VentanaOrigen extends JFrame {
             NombresCiudades.add(ciudad.getNombreCiudad());
         }
     }
+  /*  public static void reiniciarCiudades() {
+        CiudadesArrayList.clear();
+        for (Ciudades ciudad : Ciudades.values()) {
+            CiudadesArrayList.add(ciudad.getBotonCiudad());
+            NombresCiudades.add(ciudad.getNombreCiudad());
+        }
+    } */
 
     public void AsignarImagen() {
         ImageIcon concepcion = new ImageIcon("src/main/resources/ConcepcionBton.png");
