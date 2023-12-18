@@ -23,13 +23,7 @@ public class OrigenDestino extends JPanel {
     static String Ruta = "";
     private VentanaOrigen ventanaOrigen;
     private VentanaDestino ventanaDestino;
-    private OriginatorOR originatorOR;
-    private CaretakerOR caretakerOR;
-    private OriginatorDE originatorDE;
-    private CaretakerDE caretakerDE;
 
-
-    private int h=0;
     public OrigenDestino(){
 
         this.setLayout(new FlowLayout());
@@ -46,11 +40,6 @@ public class OrigenDestino extends JPanel {
                      ventanaOrigen = new VentanaOrigen();
                     //Ruta += ventanaOrigen.getOrigen();
 
-
-                    caretakerOR = new CaretakerOR();
-                    originatorOR = new OriginatorOR();
-                    originatorOR.setEstado(ventanaOrigen);
-                    CaretakerOR.addmementoOR(originatorOR.guardar());
                     origen.setVisible(false);
 
                 }
@@ -69,18 +58,11 @@ public class OrigenDestino extends JPanel {
             public void actionPerformed(ActionEvent e) {
                  ventanaDestino = new VentanaDestino();
                 //Ruta += "-" + ventanaDestino.getDestino();
-                h++;
                 destino.setVisible(false);
             }
         });
 
 
-    }
-    public int getH(){
-        return h;
-    }
-    public void resetorigen(){
-        originatorOR.restaurar(caretakerOR.getmementoOR(0));
     }
     public void resetdestino(){
     }
