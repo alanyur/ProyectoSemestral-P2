@@ -131,6 +131,7 @@ public class Ventana extends JFrame {
                     Ventana.this.add(venbu);
                     venbu.setBounds(0 ,0 ,1200,500);
                     paneles[index] = venbu;
+                    anterior.setVisible(true);
                 }
                 if(index == 2){
                     Buses busSeleccionado = venbu.getBusSeleccionado();
@@ -152,6 +153,7 @@ public class Ventana extends JFrame {
         anterior = new JButton("Anterior");
         this.add(anterior);
         anterior.setBounds(100,500,100,100);
+        anterior.setVisible(false);
         anterior.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -159,9 +161,10 @@ public class Ventana extends JFrame {
                 if(index==1) { //aqui se devuelve al primer apartado (pero los botones no son parte de este (creo))
                     //creo que hay que hacer memento para ventana destino y ventana origen
                     originatorOd.restaurar(caretakerOd.getmementoOd(0));
-                    origenDestino.resetorigen();
+                    //origenDestino.resetorigen();
                     //originatorOR.restaurar(caretakerOR.getmementoOR(0));
                     //originatorDE.restaurar(caretakerDE.getmementoDE(0));
+                    anterior.setVisible(false);
                 }
                 if(index==2) {
                     originatorBu.restaurar(caretakerBu.getmementobu(0));
