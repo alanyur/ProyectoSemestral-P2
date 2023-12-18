@@ -74,14 +74,17 @@ import java.util.HashMap;
                         sillas[i].setBounds(0, i * 25, 20, 20);
                     } else if(i < NumeroDeAsientos /2)  {
                         sillas[i].setBounds(40, y * 25, 20, 20);
-                        y++;}
+                        y++;
+                    }
                     else if(i < NumeroDeAsientos *3/4)  {
                         sillas[i].setBounds(80, w * 25, 20, 20);
-                        w++;}
+                        w++;
+                    }
                     else   {
                         sillas[i].setBounds(120, v * 25, 20, 20);
-                        v++;}
+                        v++;
                     }
+                }
                     int finalZ = z;
                 if(i < NumeroDeAsientos /2) {
                     sillas[i].addActionListener(new ActionListener() {
@@ -92,8 +95,7 @@ import java.util.HashMap;
                     });
                     //tengo que cambiarle el tamaño a la imagen
                     this.add(sillas[i]);
-                 }
-                else{
+                }else{
                     sillas[i].addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {

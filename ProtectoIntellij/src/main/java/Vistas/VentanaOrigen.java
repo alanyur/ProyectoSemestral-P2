@@ -20,9 +20,7 @@ public class VentanaOrigen extends JFrame {
     private static HashMap<JButton, String> mapaBotonCiudad;
     private static ArrayList<JButton> CiudadesArrayList = new ArrayList<>();
     private static ArrayList<String> NombresCiudades = new ArrayList<>();
-    public VentanaOrigen(int u){
 
-    }
     public VentanaOrigen() {
         mapaBotonCiudad = new HashMap<>();
         Origen = "";
