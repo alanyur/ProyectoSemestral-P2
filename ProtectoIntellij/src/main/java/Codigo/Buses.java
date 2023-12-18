@@ -11,5 +11,6 @@ public abstract class Buses {
     private String patente;
 
     public abstract int getAsientos();
+    public abstract int getPisos();
 }
 

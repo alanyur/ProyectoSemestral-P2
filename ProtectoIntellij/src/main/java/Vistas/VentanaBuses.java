@@ -113,6 +113,9 @@ public  class VentanaBuses extends JPanel {
         }
         atributos();
     }
+    public Buses getBus(){
+        return busSeleccionado;
+    }
     public void atributos(){
         Buses[0] = busA;
         Buses[1] = busB;

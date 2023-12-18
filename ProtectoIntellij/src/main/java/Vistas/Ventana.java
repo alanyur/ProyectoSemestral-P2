@@ -95,7 +95,7 @@ public class Ventana extends JFrame {
                     if (index == 2) {
                         Buses busSeleccionado = venbu.getBusSeleccionado();
                         int numeroAsientos = (busSeleccionado != null) ? busSeleccionado.getAsientos() : 0;
-                        ventanaAsientos = new VentanaAsientos(numeroAsientos);
+                        ventanaAsientos = new VentanaAsientos(numeroAsientos,venbu.getBus());
                         Ventana.this.add(ventanaAsientos);
                         ventanaAsientos.setBounds(0, 0, 1200, 500);
                         paneles[index] = ventanaAsientos;

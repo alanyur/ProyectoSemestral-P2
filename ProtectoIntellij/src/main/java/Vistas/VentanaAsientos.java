@@ -22,7 +22,6 @@ import java.util.HashMap;
  * @author Juan Agustín Umaña Silva
  */
         public class VentanaAsientos extends JPanel implements BusSelecListener{
-            private BusC bus; //aqui debo hacer algo para que cambie segun el boton a pulsar
             private ImageIcon icon = new ImageIcon ("src/main/resources/asientos.png");
             private ImageIcon icon2 = new ImageIcon ("src/main/resources/asientopremium.png");
             private static JButton[] sillas;
@@ -32,7 +31,7 @@ import java.util.HashMap;
             int[] asientos = new int[60];
             private HashMap<JLabel, Buses> mapa;
             int NumeroDeAsientos = 0;
-            public VentanaAsientos(int n){
+            public VentanaAsientos(int n,Buses c){
                 for(int b=0; b<60; b++){
                     asientos[b]=0;
                 }
@@ -47,8 +46,6 @@ import java.util.HashMap;
                 }
 
 
-
-                bus = new BusC();
                 //int NumeroDeAsientos = bus.getAsientos();
 
                 int y= 0;
@@ -64,26 +61,33 @@ import java.util.HashMap;
                     Image imagenEscalada = imagenOriginal.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
                     ImageIcon iconEscalado = new ImageIcon(imagenEscalada);
                 sillas[i]= new JButton(iconEscalado);
-                    /*if(bus.getPisos()==1) {
+                    if(c.getPisos()==1 && c.getAsientos()==20) {
                         if (i < NumeroDeAsientos / 2) {
-                        sillas[i].setBounds(0, i * 25, 40, 40);
+                        sillas[i].setBounds(500, i * 35, 30, 30);
                     } else {
-                        sillas[i].setBounds(40, y * 25, 40, 40);
+                        sillas[i].setBounds(550, y * 35, 30, 30);
                         y++;
                     }
-
-                    } */
-                    if(bus.getPisos()==2){
+                    }
+                    if(c.getPisos()==1 && c.getAsientos()==30) {
+                        if (i < NumeroDeAsientos / 2) {
+                            sillas[i].setBounds(500, i * 30, 25, 25);
+                        } else {
+                            sillas[i].setBounds(550, y * 30, 25, 25);
+                            y++;
+                        }
+                    }
+                    if(c.getPisos()==2){
                     if (i < NumeroDeAsientos / 4) {
-                        sillas[i].setBounds(0, i * 25, 20, 20);
+                        sillas[i].setBounds(450, i * 25, 20, 20);
                     } else if(i < NumeroDeAsientos /2)  {
-                        sillas[i].setBounds(40, y * 25, 20, 20);
+                        sillas[i].setBounds(500, y * 25, 20, 20);
                         y++;}
                     else if(i < NumeroDeAsientos *3/4)  {
-                        sillas[i].setBounds(80, w * 25, 20, 20);
+                        sillas[i].setBounds(550, w * 25, 20, 20);
                         w++;}
                     else   {
-                        sillas[i].setBounds(120, v * 25, 20, 20);
+                        sillas[i].setBounds(600, v * 25, 20, 20);
                         v++;}
                     }
                     int finalZ = z;
