@@ -25,7 +25,11 @@ public class OrigenDestino extends JPanel {
     private VentanaDestino ventanaDestino;
     private OriginatorOR originatorOR;
     private CaretakerOR caretakerOR;
+    private OriginatorDE originatorDE;
+    private CaretakerDE caretakerDE;
 
+
+    private int h=0;
     public OrigenDestino(){
 
         this.setLayout(new FlowLayout());
@@ -35,15 +39,20 @@ public class OrigenDestino extends JPanel {
         this.add(origen);
         DarEstilos(origen);
 
+
             origen.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                      ventanaOrigen = new VentanaOrigen();
                     //Ruta += ventanaOrigen.getOrigen();
-                     caretakerOR = new CaretakerOR();
-                     originatorOR = new OriginatorOR();
+
+
+                    caretakerOR = new CaretakerOR();
+                    originatorOR = new OriginatorOR();
                     originatorOR.setEstado(ventanaOrigen);
                     CaretakerOR.addmementoOR(originatorOR.guardar());
+
+
                 }
             });
         //originatorOR.setEstado(ventanaOrigen);
@@ -60,11 +69,14 @@ public class OrigenDestino extends JPanel {
             public void actionPerformed(ActionEvent e) {
                  ventanaDestino = new VentanaDestino();
                 //Ruta += "-" + ventanaDestino.getDestino();
+                h++;
             }
         });
 
 
-
+    }
+    public int getH(){
+        return h;
     }
     public void resetorigen(){
         originatorOR.restaurar(caretakerOR.getmementoOR(0));

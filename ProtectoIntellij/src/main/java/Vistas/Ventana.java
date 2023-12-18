@@ -20,6 +20,8 @@ import java.util.HashMap;
  */
 
 public class Ventana extends JFrame {
+    private JFrame error;
+    private JTextField textoerror;
     private OrigenDestino origenDestino;
     private VentanaBuses venbu;
     private VentanaAsientos ventanaAsientos;
@@ -78,33 +80,32 @@ public class Ventana extends JFrame {
         siguiente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                paneles[index].setVisible(false);
+                    paneles[index].setVisible(false);
 
-                // Incrementa el índice al siguiente panel
-                index = (index + 1) % paneles.length;//circular increment
-                if (index == 1){
-                    venbu = new VentanaBuses(OrigenDestino.Ruta);
+                    // Incrementa el índice al siguiente panel
+                    index = (index + 1) % paneles.length;//circular increment
+                    if (index == 1) {
+                        venbu = new VentanaBuses(OrigenDestino.Ruta);
 
-                    Ventana.this.add(venbu);
-                    venbu.setBounds(0 ,0 ,1200,500);
-                    paneles[index] = venbu;
-                    anterior.setVisible(true);
-                }
-                if(index == 2){
-                    Buses busSeleccionado = venbu.getBusSeleccionado();
-                    int numeroAsientos = (busSeleccionado != null) ? busSeleccionado.getAsientos() : 0;
-                    ventanaAsientos = new VentanaAsientos(numeroAsientos);
-                    Ventana.this.add(ventanaAsientos);
-                    ventanaAsientos.setBounds(0, 0, 1200, 500);
-                    paneles[index] = ventanaAsientos;
-                    siguiente.setText("Finalizar");
-                }
-                if (index == 3){
-                    System.exit(0);
-                }
-                // Muestra el siguiente panel
-                paneles[index].setVisible(true);
-
+                        Ventana.this.add(venbu);
+                        venbu.setBounds(0, 0, 1200, 500);
+                        paneles[index] = venbu;
+                        anterior.setVisible(true);
+                    }
+                    if (index == 2) {
+                        Buses busSeleccionado = venbu.getBusSeleccionado();
+                        int numeroAsientos = (busSeleccionado != null) ? busSeleccionado.getAsientos() : 0;
+                        ventanaAsientos = new VentanaAsientos(numeroAsientos);
+                        Ventana.this.add(ventanaAsientos);
+                        ventanaAsientos.setBounds(0, 0, 1200, 500);
+                        paneles[index] = ventanaAsientos;
+                        siguiente.setText("Finalizar");
+                    }
+                    if (index == 3) {
+                        System.exit(0);
+                    }
+                    // Muestra el siguiente panel
+                    paneles[index].setVisible(true);
 
             }
         });
@@ -123,6 +124,8 @@ public class Ventana extends JFrame {
                     //originatorOR.restaurar(caretakerOR.getmementoOR(0));
                     //originatorDE.restaurar(caretakerDE.getmementoDE(0));
                     anterior.setVisible(false);
+                    //origenDestino.getOrigen().reiniciarCiudades();
+                    origenDestino = new OrigenDestino();
                 }
                 if(index==2) {
                     originatorBu.restaurar(caretakerBu.getmementobu(0));

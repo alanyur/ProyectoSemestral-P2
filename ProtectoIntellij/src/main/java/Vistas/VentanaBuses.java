@@ -145,6 +145,9 @@ public  class VentanaBuses extends JPanel {
     public void setRuta(String ruta) {
         Ruta = ruta;
     }
+    public String getRuta(){
+        return Ruta;
+    }
 
     public JLabel getLabelSeleccionado() {
         return labelSeleccionado;
