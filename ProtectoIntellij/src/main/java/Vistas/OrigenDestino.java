@@ -51,7 +51,7 @@ public class OrigenDestino extends JPanel {
                     originatorOR = new OriginatorOR();
                     originatorOR.setEstado(ventanaOrigen);
                     CaretakerOR.addmementoOR(originatorOR.guardar());
-
+                    origen.setVisible(false);
 
                 }
             });
@@ -70,6 +70,7 @@ public class OrigenDestino extends JPanel {
                  ventanaDestino = new VentanaDestino();
                 //Ruta += "-" + ventanaDestino.getDestino();
                 h++;
+                destino.setVisible(false);
             }
         });
 

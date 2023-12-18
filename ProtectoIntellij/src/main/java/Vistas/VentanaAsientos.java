@@ -64,16 +64,16 @@ import java.util.HashMap;
                     Image imagenEscalada = imagenOriginal.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
                     ImageIcon iconEscalado = new ImageIcon(imagenEscalada);
                 sillas[i]= new JButton(iconEscalado);
-                if(bus.getPisos()==1) {
-                    if (i < NumeroDeAsientos / 2) {
+                    /*if(bus.getPisos()==1) {
+                        if (i < NumeroDeAsientos / 2) {
                         sillas[i].setBounds(0, i * 25, 40, 40);
                     } else {
                         sillas[i].setBounds(40, y * 25, 40, 40);
                         y++;
                     }
 
-                }
-                if(bus.getPisos()==2){
+                    } */
+                    if(bus.getPisos()==2){
                     if (i < NumeroDeAsientos / 4) {
                         sillas[i].setBounds(0, i * 25, 20, 20);
                     } else if(i < NumeroDeAsientos /2)  {
@@ -87,7 +87,7 @@ import java.util.HashMap;
                         v++;}
                     }
                     int finalZ = z;
-                if(i < NumeroDeAsientos /2) {
+                    if(i < NumeroDeAsientos /2) {
                     int finalI = i;
                     sillas[i].addActionListener(new ActionListener() {
                         @Override
@@ -120,7 +120,7 @@ import java.util.HashMap;
                     });
                     //tengo que cambiarle el tamaño a la imagen
                     this.add(sillas[i]);
-                }
+                    }
                 }
             }
 
