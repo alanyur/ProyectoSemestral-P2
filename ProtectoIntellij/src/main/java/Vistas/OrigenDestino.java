@@ -19,11 +19,8 @@ public class OrigenDestino extends JPanel {
     private ImageIcon icon = new ImageIcon("src/main/resources/logo1(1).png");
     private JButton origen;
     private JButton destino;
-    private JButton siguiente = new JButton("Siguiente"); //borra esto, no se ocupa
     private JLabel logo;
     static String Ruta = "";
-    private String TextOrigen;
-    private String TextDestino;
     private VentanaOrigen ventanaOrigen;
     private VentanaDestino ventanaDestino;
     private OriginatorOR originatorOR;

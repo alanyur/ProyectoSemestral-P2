@@ -20,7 +20,6 @@ import java.util.HashMap;
  */
 
 public class Ventana extends JFrame {
-    private String Ruta;
     private OrigenDestino origenDestino;
     private VentanaBuses venbu;
     private VentanaAsientos ventanaAsientos;
@@ -43,48 +42,6 @@ public class Ventana extends JFrame {
         this.setBounds(0, 0, 1200, 700);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
-
-         /*vena = new VentanaAsientos();
-        this.add(vena);
-        vena.setBounds(0 ,0 ,1200,500);
-        vena.setVisible(true); */
-        /*
-        venbu = new VentanaBuses();
-        this.add(venbu);
-        venbu.setBounds(0 ,0 ,1200,500);
-        venbu.setVisible(true); */
-
-
-        /*this.add(botones);
-        botones.setBounds(0,500,1200,200);
-        botones.setVisible(true);
-        botones.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                QueAbrir(botones.getCount1());
-                QueCerra(botones.getCount2());
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });*/
         origenDestino = new OrigenDestino();
         String Or = origenDestino.getRuta();
         this.add(origenDestino);
@@ -140,6 +97,7 @@ public class Ventana extends JFrame {
                     Ventana.this.add(ventanaAsientos);
                     ventanaAsientos.setBounds(0, 0, 1200, 500);
                     paneles[index] = ventanaAsientos;
+                    siguiente.setText("Finalizar");
                 }
                 if (index == 3){
                     System.exit(0);
@@ -168,6 +126,7 @@ public class Ventana extends JFrame {
                 }
                 if(index==2) {
                     originatorBu.restaurar(caretakerBu.getmementobu(0));
+                    siguiente.setText("Siguiente");
                 }
                 if(index==0){
                     System.exit(0);

@@ -93,7 +93,7 @@ import java.util.HashMap;
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             if(asientos[finalI]==0) {
-                                System.out.print("en el asiento " + finalZ + " " );
+                                System.out.print("acaba de comprar el asiento " + finalZ + " " );
                                 asientos[finalI]=1;
                             }
                             else{
@@ -110,7 +110,7 @@ import java.util.HashMap;
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             if (asientos[finalI] == 0) {
-                                System.out.print("en el asiento (premium) " + finalZ+ " " );
+                                System.out.print("acaba de comprar el asiento (premium) " + finalZ+ " " );
                                 asientos[finalI]=1;
                             }
                             else{
