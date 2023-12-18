@@ -1,6 +1,7 @@
 package Vistas;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,10 +32,12 @@ public class OrigenDestino extends JPanel {
     public OrigenDestino(){
 
         this.setLayout(new FlowLayout());
-        this.setBackground(new Color(61, 100, 227));
+        this.setBackground(new Color(0x083563));
 
         origen = new JButton("Origen");
         this.add(origen);
+        DarEstilos(origen);
+
             origen.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -54,6 +57,7 @@ public class OrigenDestino extends JPanel {
 
         destino = new JButton("Destino");
         this.add(destino);
+        DarEstilos(destino);
         destino.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -79,6 +83,13 @@ public class OrigenDestino extends JPanel {
     }
 
     public VentanaDestino getDestino() {
-        return ventanaDestino;
+        return ventanaDestino;}
+
+    public void DarEstilos(JButton btn){
+        btn.setBackground(new Color(0xEEA31D));
+        btn.setForeground(new Color(0,0,0));
+        btn.setFont(new Font("Arial", Font.BOLD, 20));
+        btn.setPreferredSize(new Dimension(200, 80));
+
     }
 }

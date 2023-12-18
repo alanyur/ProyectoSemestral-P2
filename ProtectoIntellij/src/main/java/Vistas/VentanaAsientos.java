@@ -57,7 +57,7 @@ import java.util.HashMap;
                 int z= 0;
                 sillas = new JButton[NumeroDeAsientos];
                 setLayout(null);
-                this.setBackground(new Color(66, 10, 127));
+                this.setBackground(new Color(0x083563));
                 for(int i=0; i<NumeroDeAsientos;i++) {
                     z=i;
                     Image imagenOriginal = (i < NumeroDeAsientos / 2) ? icon.getImage() : icon2.getImage();
@@ -66,9 +66,9 @@ import java.util.HashMap;
                 sillas[i]= new JButton(iconEscalado);
                 if(bus.getPisos()==1) {
                     if (i < NumeroDeAsientos / 2) {
-                        sillas[i].setBounds(0, i * 25, 20, 20);
+                        sillas[i].setBounds(0, i * 25, 40, 40);
                     } else {
-                        sillas[i].setBounds(40, y * 25, 20, 20);
+                        sillas[i].setBounds(40, y * 25, 40, 40);
                         y++;
                     }
 
@@ -138,5 +138,9 @@ import java.util.HashMap;
                 NumeroDeAsientos = busSelec.getAsientos();
                 System.out.println(busSelec.getAsientos());
                 sillas = new JButton[NumeroDeAsientos];
+            }
+            public void DarEstilos(JButton btn){
+                btn.setBackground(new Color(213, 213, 13, 200));
+                btn.setForeground(new Color(0,0,0));
             }
         }

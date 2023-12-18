@@ -5,6 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
+/**
+ * Ciudades: Enum de cuidades disponibles para elegir como origen o destino,
+ * ademas de asociar un boton para cada ciudad
+ * @ Juan Agustin Umaña Silva
+ * @ Alan Yuren Ibacache Gonelli
+ */
 public enum Ciudades {
     SANTIAGO("Santiago"),
     VALPARAISO("Valparaíso"),
@@ -14,6 +20,9 @@ public enum Ciudades {
     private final String nombreCiudad;
     private JButton botonCiudad;
 
+    /**
+     * @param nombreCiudad
+     */
     Ciudades(String nombreCiudad) {
         this.nombreCiudad = nombreCiudad;
         this.botonCiudad = new JButton();
