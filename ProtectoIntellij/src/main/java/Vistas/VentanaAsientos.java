@@ -24,37 +24,38 @@ import java.util.HashMap;
         public class VentanaAsientos extends JPanel{
             private ImageIcon icon = new ImageIcon ("src/main/resources/asientos.png");
             private ImageIcon icon2 = new ImageIcon ("src/main/resources/asientopremium.png");
-            private static JButton[] sillas;
+            private static JButton[][] sillas;
             private JLabel labelSeleccionado;
             private VentanaBuses ventanaBuses;
             private Buses busSelec;
-            int[] asientos = new int[60];
             private HashMap<JLabel, Buses> mapa;
             int NumeroDeAsientos = 0;
-            public VentanaAsientos(int n,Buses c){
-                for(int b=0; b<60; b++){
-                    asientos[b]=0;
-                }
+            public VentanaAsientos(int n,Buses b){
                 this.NumeroDeAsientos = n;
                 ventanaBuses = new VentanaBuses(OrigenDestino.Ruta);
                 ventanaBuses.setVisible(false);
 
-                Buses busSeleccionado = ventanaBuses.getBusSeleccionado();
+                /*Buses busSeleccionado = ventanaBuses.getBusSeleccionado();
                 if (busSeleccionado != null) {
                     busSlec(busSeleccionado);
-                }
+                }*/
 
-
-                //int NumeroDeAsientos = bus.getAsientos();
-
-                int y= 0;
-                int w=0;
-                int v=0;
-                int z= 0;
-                sillas = new JButton[NumeroDeAsientos];
-                setLayout(null);
+                int filas = b.getFilas();
+                int columnas = b.getColumnas();
+                sillas = new JButton[filas*2][columnas/2];
+                setLayout(new GridLayout(filas*2,columnas/2));
                 this.setBackground(new Color(0x083563));
-                for(int i=0; i<NumeroDeAsientos;i++) {
+                for (int i = 0; i < sillas.length; i++) {
+                    for (int j = 0; j < sillas[i].length; j++) {
+                        Image imagenOriginal = (i < filas / 2) ? icon.getImage() : icon2.getImage();
+                        Image imagenEscalada = imagenOriginal.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+                        ImageIcon iconEscalado = new ImageIcon(imagenEscalada);
+                        sillas[i][j] = new JButton(iconEscalado);
+                        Estilos(sillas[i][j]);
+                        VentanaAsientos.this.add(sillas[i][j]);
+                    }
+                }
+                /*for(int i=0; i<NumeroDeAsientos;i++) {
                     z=i;
                     Image imagenOriginal = (i < NumeroDeAsientos / 2) ? icon.getImage() : icon2.getImage();
                     Image imagenEscalada = imagenOriginal.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
@@ -80,9 +81,18 @@ import java.util.HashMap;
                     if (i < NumeroDeAsientos / 4) {
                         sillas[i].setBounds(450, i * 25, 20, 20);
                     } else if(i < NumeroDeAsientos /2)  {
-                        sillas[i].setBounds(500, y * 25, 20, 20);
-                        y++;}
+                        sillas[i].setBounds(40, y * 25, 20, 20);
+                        y++;
+                    }
                     else if(i < NumeroDeAsientos *3/4)  {
+                        sillas[i].setBounds(80, w * 25, 20, 20);
+                        w++;
+                    }else{
+                        sillas[i].setBounds(120, v * 25, 20, 20);
+                        v++;
+                        sillas[i].setBounds(500, y * 25, 20, 20);
+                        y++;
+                    }if(i < NumeroDeAsientos *3/4)  {
                         sillas[i].setBounds(550, w * 25, 20, 20);
                         w++;}
                     else   {
@@ -106,8 +116,7 @@ import java.util.HashMap;
                     });
                     //tengo que cambiarle el tamaño a la imagen
                     this.add(sillas[i]);
-                 }
-                else{
+                }else{
                     int finalI = i;
                     sillas[i].addActionListener(new ActionListener() {
                         @Override
@@ -124,7 +133,7 @@ import java.util.HashMap;
                     //tengo que cambiarle el tamaño a la imagen
                     this.add(sillas[i]);
                     }
-                }
+                }*/
             }
 
             public void setBusSelec(Buses busSelec) {
@@ -139,10 +148,10 @@ import java.util.HashMap;
                 this.busSelec = bus;
                 NumeroDeAsientos = busSelec.getAsientos();
                 System.out.println(busSelec.getAsientos());
-                sillas = new JButton[NumeroDeAsientos];
+                sillas = new JButton[bus.getFilas()][bus.getColumnas()];
             }
-            public void DarEstilos(JButton btn){
-                btn.setBackground(new Color(213, 213, 13, 200));
+            public void Estilos(JButton btn){
+                btn.setBackground(new Color(0xEEA31D));
                 btn.setForeground(new Color(0,0,0));
             }
         }

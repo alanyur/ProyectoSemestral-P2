@@ -20,10 +20,10 @@ public class OrigenDestino extends JPanel {
     private JButton origen;
     private JButton destino;
     private JLabel logo;
-    static String Ruta = "";
     private VentanaOrigen ventanaOrigen;
     private VentanaDestino ventanaDestino;
-
+    static String Ruta = "";
+    private int h=0;
     public OrigenDestino(){
 
         this.setLayout(new FlowLayout());
@@ -37,16 +37,16 @@ public class OrigenDestino extends JPanel {
             origen.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    if ( ventanaOrigen == null) {
+                        ventanaOrigen = new VentanaOrigen();
+                    }
                      ventanaOrigen = new VentanaOrigen();
+
                     //Ruta += ventanaOrigen.getOrigen();
 
                     origen.setVisible(false);
-
                 }
             });
-        //originatorOR.setEstado(ventanaOrigen);
-        //CaretakerOR.addmementoOR(originatorOR.guardar());
-
         logo = new JLabel(icon);
         this.add(logo);
 
@@ -56,6 +56,9 @@ public class OrigenDestino extends JPanel {
         destino.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (ventanaDestino == null) {
+                    ventanaDestino = new VentanaDestino();
+                }
                  ventanaDestino = new VentanaDestino();
                 //Ruta += "-" + ventanaDestino.getDestino();
                 destino.setVisible(false);

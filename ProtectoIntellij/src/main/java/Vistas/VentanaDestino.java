@@ -39,9 +39,6 @@ public class VentanaDestino extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JButton botonPresionado = (JButton) e.getSource();
-                    String ciudadSeleccionada = VentanaOrigen.getMapaBotonCiudad().get(botonPresionado);
-                    OrigenDestino.Ruta += "-" + ciudadSeleccionada;
-                    //System.out.println(OrigenDestino.Ruta);
                     VentanaDestino.this.setVisible(false);
                     //aquí podemos agregar algo para que la ventana sepa las direcciones
                 }

@@ -53,7 +53,6 @@ public class Ventana extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
         origenDestino = new OrigenDestino();
-        String Or = origenDestino.getRuta();
         this.add(origenDestino);
         origenDestino.setBounds(0, 0, 1200, 500);
         origenDestino.setVisible(true);
