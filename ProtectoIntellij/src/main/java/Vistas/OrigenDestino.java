@@ -23,11 +23,6 @@ public class OrigenDestino extends JPanel {
     private VentanaOrigen ventanaOrigen;
     private VentanaDestino ventanaDestino;
     static String Ruta = "";
-    private OriginatorOR originatorOR;
-    private CaretakerOR caretakerOR;
-    private OriginatorDE originatorDE;
-    private CaretakerDE caretakerDE;
-
     private int h=0;
     public OrigenDestino(){
 
@@ -49,17 +44,9 @@ public class OrigenDestino extends JPanel {
 
                     //Ruta += ventanaOrigen.getOrigen();
 
-
-                    caretakerOR = new CaretakerOR();
-                    originatorOR = new OriginatorOR();
-                    originatorOR.setEstado(ventanaOrigen);
-                    CaretakerOR.addmementoOR(originatorOR.guardar());
                     origen.setVisible(false);
                 }
             });
-        //originatorOR.setEstado(ventanaOrigen);
-        //CaretakerOR.addmementoOR(originatorOR.guardar());
-
         logo = new JLabel(icon);
         this.add(logo);
 
@@ -74,18 +61,11 @@ public class OrigenDestino extends JPanel {
                 }
                  ventanaDestino = new VentanaDestino();
                 //Ruta += "-" + ventanaDestino.getDestino();
-                h++;
                 destino.setVisible(false);
             }
         });
 
 
-    }
-    public int getH(){
-        return h;
-    }
-    public void resetorigen(){
-        originatorOR.restaurar(caretakerOR.getmementoOR(0));
     }
     public void resetdestino(){
     }

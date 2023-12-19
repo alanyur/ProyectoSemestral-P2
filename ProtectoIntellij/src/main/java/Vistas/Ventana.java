@@ -20,8 +20,8 @@ import java.util.HashMap;
  */
 
 public class Ventana extends JFrame {
-    private JFrame error;
-    private JTextField textoerror;
+    private JLabel texto1;
+    private JLabel texto2;
     private OrigenDestino origenDestino;
     private VentanaBuses venbu;
     private VentanaAsientos ventanaAsientos;
@@ -32,6 +32,14 @@ public class Ventana extends JFrame {
     private JLabel Pasaje;
     private int index = 0;
     public Ventana() {
+        texto2 = new JLabel();
+        texto2.setBounds(450,515,400,100);
+        this.add(texto2);
+        texto2.setVisible(true);
+        texto1 = new JLabel("Elija un Origen y un Destino para la ruta de su Bus");
+        texto1.setBounds(450,500,400,100);
+        this.add(texto1);
+        texto1.setVisible(true);
         CaretakerBu caretakerBu = new CaretakerBu();
         CaretakerOd caretakerOd = new CaretakerOd();
         //CaretakerOR caretakerOR = new CaretakerOR();
@@ -90,6 +98,9 @@ public class Ventana extends JFrame {
                         venbu.setBounds(0, 0, 1200, 500);
                         paneles[index] = venbu;
                         anterior.setVisible(true);
+                        texto1.setText("Elija el Bus de su preferencia");
+                        texto2.setVisible(true);
+                        texto2.setText("Se tomará en cuenta el último que presione");
                     }
                     if (index == 2) {
                         Buses busSeleccionado = venbu.getBusSeleccionado();
@@ -99,6 +110,9 @@ public class Ventana extends JFrame {
                         ventanaAsientos.setBounds(0, 0, 1200, 500);
                         paneles[index] = ventanaAsientos;
                         siguiente.setText("Finalizar");
+                        texto1.setText("Elija el o los asientos que quiera comprar");
+                        texto2.setVisible(true);
+                        texto2.setText("Si ya terminó presione Finalizar");
                     }
                     if (index == 3) {
                         System.exit(0);
@@ -125,10 +139,14 @@ public class Ventana extends JFrame {
                     anterior.setVisible(false);
                     //origenDestino.getOrigen().reiniciarCiudades();
                     origenDestino = new OrigenDestino();
+                    texto1.setText("Si quiere otra ruta, actualice la página");
+                    texto2.setVisible(false);
                 }
                 if(index==2) {
                     originatorBu.restaurar(caretakerBu.getmementobu(0));
                     siguiente.setText("Siguiente");
+                    texto1.setText("Elija el Bus de su preferencia");
+                    texto2.setText("Se tomará en cuenta el último que presione");
                 }
                 if(index==0){
                     System.exit(0);
