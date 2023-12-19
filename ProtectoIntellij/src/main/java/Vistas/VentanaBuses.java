@@ -18,11 +18,7 @@ import java.util.Random;
  * @author Juan Agustín Umaña Silva
  */
 public  class VentanaBuses extends JPanel {
-    private BusSelecListener Listener;
-    public void SetBusSelecListener(BusSelecListener listener){
-        this.Listener = listener;
 
-    }
     private ImageIcon logoElige = new ImageIcon("src/main/resources/logoUltimo.png");
     private JButton A;
     private JButton B;
@@ -78,7 +74,6 @@ public  class VentanaBuses extends JPanel {
                 public void mouseClicked(MouseEvent e) {
                     labelSeleccionado = (JLabel) e.getSource();
                     busSeleccionado = mapaBusLabel.get(labelSeleccionado);
-                    seleccionarBus(busSeleccionado);
                     JLabel label = (JLabel) e.getSource();
                     label.setBackground(new Color(0xEEA31D));
                     label.setOpaque(true);
@@ -162,11 +157,7 @@ public  class VentanaBuses extends JPanel {
     public  Codigo.Buses getBusSeleccionado() {
         return busSeleccionado;
     }
-    private void seleccionarBus(Buses Seleccionado) {
-        if (Listener != null) {
-            Listener.busSlec(Seleccionado);
-        }
-    }
+
     public void LabelEstilos( JLabel jLabel ){
            jLabel.setBackground(new Color(238, 163, 29));
            jLabel.setForeground(new Color(0,0,0));
