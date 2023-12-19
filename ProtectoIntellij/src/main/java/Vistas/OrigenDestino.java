@@ -22,7 +22,6 @@ public class OrigenDestino extends JPanel {
     private JLabel logo;
     private VentanaOrigen ventanaOrigen;
     private VentanaDestino ventanaDestino;
-    static String Ruta = "";
     private int h=0;
     public OrigenDestino(){
 
@@ -68,9 +67,6 @@ public class OrigenDestino extends JPanel {
 
     }
     public void resetdestino(){
-    }
-    public String getRuta() {
-        return Ruta;
     }
 
     public VentanaOrigen getOrigen() {

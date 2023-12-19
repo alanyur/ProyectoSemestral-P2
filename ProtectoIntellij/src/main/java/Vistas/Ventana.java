@@ -92,7 +92,9 @@ public class Ventana extends JFrame {
                     // Incrementa el índice al siguiente panel
                     index = (index + 1) % paneles.length;//circular increment
                     if (index == 1) {
-                        venbu = new VentanaBuses(OrigenDestino.Ruta);
+                        venbu = new VentanaBuses(DatosCompartidos.getRuta());
+                        System.out.println(DatosCompartidos.getOrigen());
+                        System.out.println(DatosCompartidos.getDestino());
 
                         Ventana.this.add(venbu);
                         venbu.setBounds(0, 0, 1200, 500);

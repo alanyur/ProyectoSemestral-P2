@@ -32,7 +32,7 @@ import java.util.HashMap;
             int NumeroDeAsientos = 0;
             public VentanaAsientos(int n,Buses b){
                 this.NumeroDeAsientos = n;
-                ventanaBuses = new VentanaBuses(OrigenDestino.Ruta);
+                ventanaBuses = new VentanaBuses(DatosCompartidos.getRuta());
                 ventanaBuses.setVisible(false);
 
                 /*Buses busSeleccionado = ventanaBuses.getBusSeleccionado();

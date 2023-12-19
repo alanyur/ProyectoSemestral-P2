@@ -7,26 +7,27 @@ package Codigo;
  *   @author Alan Yuren Ibacache Gonelli
  *
  */
-public class BusB extends Buses implements Bus_Iterator{
+public class BusB extends Buses {
     private static final long serialVersionUID = 3L;
     private int asientos = 32;
     private int pisos = 1;
     private int filas = asientos/4;
     private int columnas = 4;
-    private Integer[][] MatrizData = new Integer[filas][columnas];
+    private int[][] MatrizData_B = new int[filas][columnas];
+    public MatrixIterator iterator_B = new MatrixIterator(MatrizData_B);
+    private String patente = "";
 
     public BusB() {
-
-    }
-    public void PrintData(){
-        for (int i = 0; i < MatrizData.length ; i++) {
-            for (int j = 0; j < MatrizData[i].length; j++) {
-                System.out.print(MatrizData[i][j] + " ");
-            }
-            System.out.println();
-        }
+        llenar(iterator_B);
     }
 
+    public BusB(String patente) {
+        this.patente = patente;
+    }
+    public void Print_B(){
+        iterator_B = new MatrixIterator(MatrizData_B);
+        Print(iterator_B,MatrizData_B);
+    }
     public int getAsientos() {
         return asientos;
     }
@@ -34,24 +35,6 @@ public class BusB extends Buses implements Bus_Iterator{
         return pisos;
     }
 
-    @Override
-    public boolean hasNext() {
-        return filas < MatrizData.length && columnas < MatrizData[filas].length;
-    }
-
-    @Override
-    public int getNext() {
-        if(!hasNext()){
-            throw new IndexOutOfBoundsException("No hay más elementos en la matriz");
-        }
-        int elemento = MatrizData[filas][columnas];
-        columnas++;
-        if(columnas >= MatrizData[filas].length){
-            filas++;
-            columnas = 0;
-        }
-        return elemento;
-    }
 
     @Override
     public int getFilas() {

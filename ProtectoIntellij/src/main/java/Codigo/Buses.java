@@ -21,6 +21,23 @@ public abstract class Buses implements Serializable {
     public abstract int getPisos();
     public abstract int getFilas();
     public abstract int getColumnas();
+    public void llenar(MatrixIterator iterator){
+        while (iterator.hasNext()) {
+            iterator.setElement(0);
+            iterator.next();
+        }
+    }
+    public  void Print(MatrixIterator iterator,int[][] MatrizData){
+        int count = 0;
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+            count++;
+            if (count == MatrizData[0].length) { // Añade un salto de línea después de cada fila
+                System.out.println();
+                count = 0;
+            }
+        }
+    }
     public static void GuardarBus(Buses bus, String archivo){
         try(ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(archivo))) {
             salida.writeObject(bus);
