@@ -21,7 +21,7 @@ import java.util.HashMap;
  * @author Alan Yuren Ibacache Gonnelli
  * @author Juan Agustín Umaña Silva
  */
-        public class VentanaAsientos extends JPanel implements BusSelecListener{
+        public class VentanaAsientos extends JPanel{
             private ImageIcon icon = new ImageIcon ("src/main/resources/asientos.png");
             private ImageIcon icon2 = new ImageIcon ("src/main/resources/asientopremium.png");
             private static JButton[][] sillas;
@@ -144,7 +144,6 @@ import java.util.HashMap;
                 this.mapa = mapa;
             }
 
-            @Override
             public void busSlec(Buses bus) {
                 this.busSelec = bus;
                 NumeroDeAsientos = busSelec.getAsientos();
