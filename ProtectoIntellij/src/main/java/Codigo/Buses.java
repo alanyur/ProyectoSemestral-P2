@@ -19,6 +19,8 @@ public abstract class Buses implements Serializable {
 
     public abstract int getAsientos();
     public abstract int getPisos();
+    public abstract int getFilas();
+    public abstract int getColumnas();
     public static void GuardarBus(Buses bus, String archivo){
         try(ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(archivo))) {
             salida.writeObject(bus);
@@ -37,5 +39,6 @@ public abstract class Buses implements Serializable {
             return null;
         }
     }
+
 }
 

@@ -52,4 +52,14 @@ public class BusB extends Buses implements Bus_Iterator{
         }
         return elemento;
     }
+
+    @Override
+    public int getFilas() {
+        return filas;
+    }
+
+    @Override
+    public int getColumnas() {
+        return columnas;
+    }
 }

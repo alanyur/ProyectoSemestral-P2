@@ -51,4 +51,13 @@ public class BusC extends Buses implements Bus_Iterator{
         return pisos;
     }
 
+    @Override
+    public int getFilas() {
+        return filas;
+    }
+
+    @Override
+    public int getColumnas() {
+        return columnas;
+    }
 }
