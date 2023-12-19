@@ -15,6 +15,7 @@ import static Vistas.VentanaOrigen.mapaBotonCiudad;
  */
 public class VentanaDestino extends VentanaOrigen {
     private JPanel Panel;
+    private String destino = "Y aqui la otra";
     private ArrayList<JButton> Ciudades = (ArrayList<JButton>) DatosCompartidos.getBtnCiu().clone();
     public VentanaDestino(){
         Ciudades = (ArrayList<JButton>) DatosCompartidos.getBtnCiu().clone();
@@ -33,6 +34,7 @@ public class VentanaDestino extends VentanaOrigen {
                 public void actionPerformed(ActionEvent e) {
                     JButton botonPresionado = (JButton) e.getSource();
                     String ciudadSeleccionada = mapaBotonCiudad.get(botonPresionado);
+                    destino = ciudadSeleccionada;
                     DatosCompartidos.setDestino(ciudadSeleccionada);
                     VentanaDestino.this.setVisible(false);
                     //aquí puedes agregar lógica adicional si es necesario
@@ -41,5 +43,7 @@ public class VentanaDestino extends VentanaOrigen {
         }
     }
 
-
+    public String getDestino() {
+        return destino;
+    }
 }

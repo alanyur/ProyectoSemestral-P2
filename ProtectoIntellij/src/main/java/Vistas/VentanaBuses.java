@@ -29,6 +29,8 @@ public  class VentanaBuses extends JPanel {
     private JLabel[] buses = new JLabel[5];
     private Horarios[] horariosArray = {Horarios.HORA_8, Horarios.HORA_10,Horarios.HORA_12, Horarios.HORA_14, Horarios.HORA_16};
     private String Ruta;
+    private String origen;
+    private String destino;
     private String horario;
     private HashMap<JLabel, Buses> mapaBusLabel = new HashMap<>();
     private JLabel labelSeleccionado;
@@ -37,8 +39,10 @@ public  class VentanaBuses extends JPanel {
 
 
 
-    public VentanaBuses(String ruta) {
-        this.Ruta = ruta;
+    public VentanaBuses(String origen, String destino) {
+        this.origen = origen;
+        this.destino = destino;
+        Ruta = origen + "-" + destino;
 
 
         //setRuta("Tu valor de Ruta aquí");

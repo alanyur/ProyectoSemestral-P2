@@ -16,7 +16,7 @@ import java.util.HashMap;
  */
 public class VentanaOrigen extends JFrame {
     private JPanel Panel;
-    private String Origen;
+    private String Origen = "Deberia estar la ciudad aqui";
     protected static HashMap<JButton, String> mapaBotonCiudad;
     private static ArrayList<JButton> CiudadesArrayList = new ArrayList<>();
     private static ArrayList<String> NombresCiudades = new ArrayList<>();
@@ -45,6 +45,7 @@ public class VentanaOrigen extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     JButton botonPresionado1 = (JButton) e.getSource();
                     String ciudadSeleccionada = mapaBotonCiudad.get(botonPresionado1); // Obtenemos el nombre de la ciudad asociada al botón
+                    Origen = ciudadSeleccionada;
                     DatosCompartidos.setOrigen(ciudadSeleccionada);
                     DatosCompartidos.setBtnCiu(CiudadesArrayList);
                     botonPresionado1.setVisible(false);

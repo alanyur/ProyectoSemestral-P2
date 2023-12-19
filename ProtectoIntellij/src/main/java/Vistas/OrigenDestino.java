@@ -22,6 +22,8 @@ public class OrigenDestino extends JPanel {
     private JLabel logo;
     private VentanaOrigen ventanaOrigen;
     private VentanaDestino ventanaDestino;
+    private String ciudad1 = "_";
+    private String ciudad2 = "_";
     private int h=0;
     public OrigenDestino(){
 
@@ -40,6 +42,7 @@ public class OrigenDestino extends JPanel {
                         ventanaOrigen = new VentanaOrigen();
                     }
                      ventanaOrigen = new VentanaOrigen();
+                    ciudad1 = ventanaOrigen.getOrigen();
 
                     //Ruta += ventanaOrigen.getOrigen();
 
@@ -59,6 +62,7 @@ public class OrigenDestino extends JPanel {
                     ventanaDestino = new VentanaDestino();
                 }
                  ventanaDestino = new VentanaDestino();
+                ciudad2 = ventanaDestino.getDestino();
                 //Ruta += "-" + ventanaDestino.getDestino();
                 destino.setVisible(false);
             }
@@ -66,15 +70,22 @@ public class OrigenDestino extends JPanel {
 
 
     }
-    public void resetdestino(){
+
+    public JButton getOrigen() {
+        return origen;
     }
 
-    public VentanaOrigen getOrigen() {
-        return ventanaOrigen;
+    public JButton getDestino() {
+        return destino;
     }
 
-    public VentanaDestino getDestino() {
-        return ventanaDestino;}
+    public String getCiudad1() {
+        return ciudad1;
+    }
+
+    public String getCiudad2() {
+        return ciudad2;
+    }
 
     public void DarEstilos(JButton btn){
         btn.setBackground(new Color(0xEEA31D));
