@@ -1,3 +1,4 @@
+
 package Vistas;
 
 import Codigo.Buses;
@@ -33,7 +34,7 @@ public class Ventana extends JFrame {
     private int index = 0;
     public Ventana() {
         texto2 = new JLabel();
-        texto2.setBounds(400,515,450,100);
+        texto2.setBounds(450,515,400,100);
         this.add(texto2);
         texto2.setVisible(true);
         texto1 = new JLabel("Elija un Origen y un Destino para la ruta de su Bus");
@@ -42,8 +43,12 @@ public class Ventana extends JFrame {
         texto1.setVisible(true);
         CaretakerBu caretakerBu = new CaretakerBu();
         CaretakerOd caretakerOd = new CaretakerOd();
+        //CaretakerOR caretakerOR = new CaretakerOR();
+        //CaretakerDE caretakerDE = new CaretakerDE();
         OriginatorBu originatorBu = new OriginatorBu();
         OriginatorOd originatorOd = new OriginatorOd();
+        //OriginatorOR originatorOR = new OriginatorOR();
+        //OriginatorDE originatorDE = new OriginatorDE();
         this.setLayout(null);
         this.setBounds(0, 0, 1200, 700);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -56,6 +61,19 @@ public class Ventana extends JFrame {
         CaretakerOd.addmementoOd(originatorOd.guardar());//se utiliza para recuperarlo más tarde
         originatorBu.setEstado(venbu); //puede que tenga que ubicarlo despues del listener de aceptar
         CaretakerBu.addmementoBus(originatorBu.guardar());
+
+
+        //originatorOR.setEstado(origenDestino.getOrigen());
+        //CaretakerOR.addmementoOR(originatorOR.guardar());
+        //originatorDE.setEstado(origenDestino.getDestino());
+        //CaretakerDE.addmementoDE(originatorDE.guardar());
+
+
+
+        //ventanaAsientos = new VentanaAsientos();
+        /*ventanaAsientos.setMapa(mapaLabelBuses);
+        Buses selec = mapaLabelBuses.get(LabelSelec);
+        ventanaAsientos.setBusSelec(selec);*/
 
 
         paneles[0] = origenDestino;
@@ -75,7 +93,7 @@ public class Ventana extends JFrame {
                     // Incrementa el índice al siguiente panel
                     index = (index + 1) % paneles.length;//circular increment
                     if (index == 1) {
-                        venbu = new VentanaBuses(origenDestino.getCiudad1(),origenDestino.getCiudad2());
+                        venbu = new VentanaBuses(origenDestino.getCiudad1().get(),origenDestino.getCiudad2().get());
 
                         Ventana.this.add(venbu);
                         venbu.setBounds(0, 0, 1200, 500);
@@ -83,12 +101,12 @@ public class Ventana extends JFrame {
                         anterior.setVisible(true);
                         texto1.setText("Elija el Bus de su preferencia");
                         texto2.setVisible(true);
-                        texto2.setText("Se tomará en cuenta el último que presione antes de presionar Siguiente");
+                        texto2.setText("Se tomará en cuenta el último que presione");
                     }
                     if (index == 2) {
                         Buses busSeleccionado = venbu.getBusSeleccionado();
                         int numeroAsientos = (busSeleccionado != null) ? busSeleccionado.getAsientos() : 0;
-                        ventanaAsientos = new VentanaAsientos(numeroAsientos,venbu.getBus());
+                        ventanaAsientos = new VentanaAsientos(numeroAsientos,venbu.getBus(),venbu.getRuta(),venbu.getHorario());
                         Ventana.this.add(ventanaAsientos);
                         ventanaAsientos.setBounds(0, 0, 1200, 500);
                         paneles[index] = ventanaAsientos;
@@ -98,6 +116,7 @@ public class Ventana extends JFrame {
                         texto2.setText("Si ya terminó presione Finalizar");
                     }
                     if (index == 3) {
+                        ventanaAsientos.guardar();
                         System.exit(0);
                     }
                     // Muestra el siguiente panel
@@ -129,7 +148,7 @@ public class Ventana extends JFrame {
                     originatorBu.restaurar(caretakerBu.getmementobu(0));
                     siguiente.setText("Siguiente");
                     texto1.setText("Elija el Bus de su preferencia");
-                    texto2.setText("Se tomará en cuenta el último que presione antes de presionar Siguiente");
+                    texto2.setText("Se tomará en cuenta el último que presione");
                 }
                 if(index==0){
                     System.exit(0);
@@ -150,3 +169,4 @@ public class Ventana extends JFrame {
     }
 
 }
+
