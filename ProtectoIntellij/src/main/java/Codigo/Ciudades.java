@@ -1,11 +1,8 @@
 package Codigo;
 
-import Vistas.DatosCompartidos;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 /**
  * Ciudades: Enum de cuidades disponibles para elegir como origen o destino,
@@ -33,7 +30,6 @@ public enum Ciudades {
             public void actionPerformed(ActionEvent e) {
                 // Acción al hacer clic en el botón de la ciudad
                 System.out.println("Has seleccionado: " + Ciudades.this.getNombreCiudad());
-                DatosCompartidos.setRuta(Ciudades.this.getNombreCiudad() + "-");
             }
         });
     }

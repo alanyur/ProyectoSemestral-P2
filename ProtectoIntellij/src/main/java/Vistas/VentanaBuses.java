@@ -46,7 +46,10 @@ public  class VentanaBuses extends JPanel {
 
 
 
-    public VentanaBuses(Ciudades origen, Ciudades destino) {
+    public VentanaBuses(Ciudades origen, Ciudades destino) throws a {
+        if(origen==null || destino==null){
+            throw new a();
+        }
         this.origen = origen;
         this.destino = destino;
         Ruta = origen.getNombreCiudad() + "-" + destino.getNombreCiudad();

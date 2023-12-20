@@ -27,7 +27,10 @@ import java.util.HashMap;
             int NumeroDeAsientos = 0;
             private String ruta;
             private String horario;
-            public VentanaAsientos(int n, Buses b, String ruta, String horario){
+            public VentanaAsientos(int n, Buses b, String ruta, String horario) throws a {
+                if(b==null){
+                    throw new a();
+                }
                 this.horario = horario;
                 this.ruta = ruta;
                 this.NumeroDeAsientos = n;
