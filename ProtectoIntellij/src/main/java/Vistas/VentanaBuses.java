@@ -19,11 +19,6 @@ import java.util.HashMap;
  */
 public  class VentanaBuses extends JPanel {
     private ImageIcon logoElige = new ImageIcon("src/main/resources/logoUltimo.png");
-    /*private BusA bus1 = new BusA();
-    private BusB bus2 = new BusB();
-    private BusB bus3 = new BusB();
-    private BusB bus4 = new BusB();
-    private BusC bus5 = new BusC();*/
     private Buses[] Buses1;
     private JLabel LOGO;
     private JLabel[] busesLabel = new JLabel[5];
@@ -53,9 +48,6 @@ public  class VentanaBuses extends JPanel {
         recorridoDelBus = Recorridos.bucarRecorrido(origen,destino);
         Buses1 = recorridoDelBus.getBuses();
 
-
-        //setRuta("Tu valor de Ruta aquí");
-
         LOGO = new JLabel(logoElige);
         this.add(LOGO);
 
@@ -71,6 +63,7 @@ public  class VentanaBuses extends JPanel {
             busesLabel[i].addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
+
                     labelSeleccionado = (JLabel) e.getSource();
                     busSeleccionado = mapaBusLabel.get(labelSeleccionado);
                     JLabel label = (JLabel) e.getSource();
@@ -78,6 +71,7 @@ public  class VentanaBuses extends JPanel {
                     label.setOpaque(true);
                     label.repaint();
                     horario = horariosArray[index].getHora();
+
 
 
                     // Aquí puedes hacer lo que necesites con el objeto Buses seleccionado
@@ -177,9 +171,7 @@ public  class VentanaBuses extends JPanel {
         return horario;
     }
 
-    public void Cargar(Buses[] aux){
-        for (int i = 0; i < aux.length; i++) {
-            //Codigo.Buses.
-        }
+    public void Cargar(Buses aux){
+
     }
 }

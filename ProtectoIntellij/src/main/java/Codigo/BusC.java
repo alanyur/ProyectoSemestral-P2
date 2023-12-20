@@ -46,6 +46,11 @@ public class BusC extends Buses {
     }
 
     @Override
+    public int[][] getMatriz() {
+        return MatrizData_C;
+    }
+
+    @Override
     public MatrixIterator getIterator() {
         return iterator_C;
     }

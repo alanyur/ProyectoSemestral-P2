@@ -12,6 +12,7 @@ public abstract class Buses implements Serializable {
     private static final long serialVersionUID = 1L;
     private int asientos;
     private int pisos;
+    private int[][] matriz;
 
     public Buses() {
 
@@ -21,6 +22,7 @@ public abstract class Buses implements Serializable {
     public abstract int getPisos();
     public abstract int getFilas();
     public abstract int getColumnas();
+    public abstract int[][] getMatriz();
     public abstract MatrixIterator getIterator();
     public void llenar(MatrixIterator iterator){
         while (iterator.hasNext()) {

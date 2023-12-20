@@ -31,7 +31,9 @@ import java.util.HashMap;
                 this.horario = horario;
                 this.ruta = ruta;
                 this.NumeroDeAsientos = n;
+
                 this.busSelec = cargar();
+
                 int filas = busSelec.getFilas();
 
                 int columnas = busSelec.getColumnas();
@@ -54,8 +56,25 @@ import java.util.HashMap;
                         ImageIcon iconEscalado = new ImageIcon(imagenEscalada);
 
                         sillas[i][j] = new JButton(iconEscalado);
+                        int fila = i;
+                        int columna = j;
+                        sillas[i][j].addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                int estado = busSelec.getIterator().getElement(fila,columna);
+                                    if(estado == 0){
+                                        busSelec.getIterator().setElementAt(1,fila,columna);
+                                        sillas[fila][columna].setBackground(new Color(56, 211, 11));
+                                        sillas[fila][columna].setForeground(new Color(0,0,0));
+                                    }
+                                    else{
+                                        sillas[fila][columna].setBackground(new Color(131, 8, 8));
+                                        sillas[fila][columna].setForeground(new Color(0,0,0));
+                                        System.out.println("ocupado");
+                                    }
 
-                        EstilosListener(sillas[i][j],busSelec.getIterator(),i,j);
+                            }
+                        });
 
                         VentanaAsientos.this.add(sillas[i][j]);
                     }
@@ -76,6 +95,7 @@ import java.util.HashMap;
                 btn.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        guardar();
                         /*iterator.setElementAt(1,filas,columnas);
                         btn.setBackground(new Color(0x830808));*/
                         if (iterator.getElement(filas, columnas) == 1) {
@@ -84,7 +104,8 @@ import java.util.HashMap;
                         } else {
                             // El asiento está libre, puedes marcarlo como ocupado y cambiar el estilo.
                             iterator.setElementAt(1, filas, columnas);
-                            btn.setBackground(new Color(0x830808));
+                            busSelec.Print(iterator,busSelec.getMatriz());
+
                         }
                     }
                 });
