@@ -24,10 +24,12 @@ En el diagrama adjunto se muestra como el usuario tiene multiples casos de usos,
 
 
 ### Interfaz
+![Captura de pantalla 2023-12-20 192858](https://github.com/alanyur/ProyectoSemestral-P2/assets/137654122/40b238af-90d1-49e8-8f18-1debdd4979bb)
+![Captura de pantalla 2023-12-20 192913](https://github.com/alanyur/ProyectoSemestral-P2/assets/137654122/4b29ffa9-dfcf-4c38-a199-32f0d39d9205)
+![Captura de pantalla 2023-12-20 192954](https://github.com/alanyur/ProyectoSemestral-P2/assets/137654122/5d404dfc-41e0-4edf-bbfe-8a3c4504e49c)
+![Captura de pantalla 2023-12-20 193024](https://github.com/alanyur/ProyectoSemestral-P2/assets/137654122/d48bfc3e-5ea9-4e67-8f7a-7aa60d359a6e)
 
-![image](https://github.com/alanyur/ProyectoSemestral-P2/assets/60883242/d2ace5f7-5084-4e6e-b225-89a4d1e067b1)
-![image](https://github.com/alanyur/ProyectoSemestral-P2/assets/60883242/ca928965-c0a2-4df8-b85d-0045b938c337)
-![imagenasientos](https://github.com/alanyur/ProyectoSemestral-P2/assets/137654122/611b354d-2d52-4aa3-bc39-4621b371b7c2)
+
 
 
 ### Desarrollo del Proyecto  
