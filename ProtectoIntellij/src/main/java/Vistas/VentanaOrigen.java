@@ -61,7 +61,6 @@ public class VentanaOrigen extends JFrame {
         System.out.println(Origen);
     }
 
-
     public void LlenarCuidades() {
         for(Ciudades ciudad : Ciudades.values()){
             CiudadesArrayList.add(ciudad.getBotonCiudad());

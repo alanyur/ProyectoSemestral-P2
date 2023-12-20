@@ -33,7 +33,7 @@ public class Ventana extends JFrame {
     private int index = 0;
     public Ventana() {
         texto2 = new JLabel();
-        texto2.setBounds(450,515,400,100);
+        texto2.setBounds(400,515,450,100);
         this.add(texto2);
         texto2.setVisible(true);
         texto1 = new JLabel("Elija un Origen y un Destino para la ruta de su Bus");
@@ -101,7 +101,7 @@ public class Ventana extends JFrame {
                         anterior.setVisible(true);
                         texto1.setText("Elija el Bus de su preferencia");
                         texto2.setVisible(true);
-                        texto2.setText("Se tomará en cuenta el último que presione");
+                        texto2.setText("Se tomará en cuenta el último que presione antes de presionar Siguiente");
                     }
                     if (index == 2) {
                         Buses busSeleccionado = venbu.getBusSeleccionado();
@@ -147,7 +147,7 @@ public class Ventana extends JFrame {
                     originatorBu.restaurar(caretakerBu.getmementobu(0));
                     siguiente.setText("Siguiente");
                     texto1.setText("Elija el Bus de su preferencia");
-                    texto2.setText("Se tomará en cuenta el último que presione");
+                    texto2.setText("Se tomará en cuenta el último que presione antes de presionar Siguiente");
                 }
                 if(index==0){
                     System.exit(0);

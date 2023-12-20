@@ -21,7 +21,7 @@ import java.util.HashMap;
  * @author Alan Yuren Ibacache Gonnelli
  * @author Juan Agustín Umaña Silva
  */
-        public class VentanaAsientos extends JPanel implements BusSelecListener{
+        public class VentanaAsientos extends JPanel{
             private ImageIcon icon = new ImageIcon ("src/main/resources/asientos.png");
             private ImageIcon icon2 = new ImageIcon ("src/main/resources/asientopremium.png");
             private static JButton[] sillas;
@@ -38,7 +38,6 @@ import java.util.HashMap;
                 this.NumeroDeAsientos = n;
                 ventanaBuses = new VentanaBuses(OrigenDestino.Ruta);
                 ventanaBuses.setVisible(false);
-                ventanaBuses.SetBusSelecListener(this);
 
                 Buses busSeleccionado = ventanaBuses.getBusSeleccionado();
                 if (busSeleccionado != null) {
@@ -114,11 +113,11 @@ import java.util.HashMap;
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             if (asientos[finalI] == 0) {
-                                System.out.print("acaba de comprar el asiento (premium) " + finalZ+ " " );
+                                System.out.print("acaba de comprar el asiento (premium) " + finalZ+ "\n" );
                                 asientos[finalI]=1;
                             }
                             else{
-                                System.out.print("usted ya compró el asiento " + finalZ+ " " );
+                                System.out.print("usted ya compró el asiento " + finalZ+ "\n" );
                             }
                         }
                     });
@@ -135,8 +134,6 @@ import java.util.HashMap;
             public void setMapa(HashMap<JLabel, Buses> mapa) {
                 this.mapa = mapa;
             }
-
-            @Override
             public void busSlec(Buses bus) {
                 this.busSelec = bus;
                 NumeroDeAsientos = busSelec.getAsientos();

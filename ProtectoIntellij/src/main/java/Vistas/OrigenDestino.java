@@ -64,8 +64,6 @@ public class OrigenDestino extends JPanel {
 
 
     }
-    public void resetdestino(){
-    }
     public String getRuta() {
         return Ruta;
     }
