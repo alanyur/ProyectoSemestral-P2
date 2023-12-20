@@ -20,10 +20,11 @@ public class OrigenDestino extends JPanel {
     private JButton origen;
     private JButton destino;
     private JLabel logo;
-    static String Ruta = "";
     private VentanaOrigen ventanaOrigen;
     private VentanaDestino ventanaDestino;
-
+    private String ciudad1 = "_";
+    private String ciudad2 = "_";
+    private int h=0;
     public OrigenDestino(){
 
         this.setLayout(new FlowLayout());
@@ -37,16 +38,17 @@ public class OrigenDestino extends JPanel {
             origen.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    if ( ventanaOrigen == null) {
+                        ventanaOrigen = new VentanaOrigen();
+                    }
                      ventanaOrigen = new VentanaOrigen();
+                    ciudad1 = ventanaOrigen.getOrigen();
+
                     //Ruta += ventanaOrigen.getOrigen();
 
                     origen.setVisible(false);
-
                 }
             });
-        //originatorOR.setEstado(ventanaOrigen);
-        //CaretakerOR.addmementoOR(originatorOR.guardar());
-
         logo = new JLabel(icon);
         this.add(logo);
 
@@ -56,7 +58,11 @@ public class OrigenDestino extends JPanel {
         destino.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (ventanaDestino == null) {
+                    ventanaDestino = new VentanaDestino();
+                }
                  ventanaDestino = new VentanaDestino();
+                ciudad2 = ventanaDestino.getDestino();
                 //Ruta += "-" + ventanaDestino.getDestino();
                 destino.setVisible(false);
             }
@@ -64,16 +70,23 @@ public class OrigenDestino extends JPanel {
 
 
     }
-    public String getRuta() {
-        return Ruta;
+
+
+    public JButton getOrigen() {
+        return origen;
     }
 
-    public VentanaOrigen getOrigen() {
-        return ventanaOrigen;
+    public JButton getDestino() {
+        return destino;
     }
 
-    public VentanaDestino getDestino() {
-        return ventanaDestino;}
+    public String getCiudad1() {
+        return ciudad1;
+    }
+
+    public String getCiudad2() {
+        return ciudad2;
+    }
 
     public void DarEstilos(JButton btn){
         btn.setBackground(new Color(0xEEA31D));

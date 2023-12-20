@@ -42,18 +42,13 @@ public class Ventana extends JFrame {
         texto1.setVisible(true);
         CaretakerBu caretakerBu = new CaretakerBu();
         CaretakerOd caretakerOd = new CaretakerOd();
-        //CaretakerOR caretakerOR = new CaretakerOR();
-        //CaretakerDE caretakerDE = new CaretakerDE();
         OriginatorBu originatorBu = new OriginatorBu();
         OriginatorOd originatorOd = new OriginatorOd();
-        //OriginatorOR originatorOR = new OriginatorOR();
-        //OriginatorDE originatorDE = new OriginatorDE();
         this.setLayout(null);
         this.setBounds(0, 0, 1200, 700);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
         origenDestino = new OrigenDestino();
-        String Or = origenDestino.getRuta();
         this.add(origenDestino);
         origenDestino.setBounds(0, 0, 1200, 500);
         origenDestino.setVisible(true);
@@ -61,19 +56,6 @@ public class Ventana extends JFrame {
         CaretakerOd.addmementoOd(originatorOd.guardar());//se utiliza para recuperarlo más tarde
         originatorBu.setEstado(venbu); //puede que tenga que ubicarlo despues del listener de aceptar
         CaretakerBu.addmementoBus(originatorBu.guardar());
-
-
-        //originatorOR.setEstado(origenDestino.getOrigen());
-        //CaretakerOR.addmementoOR(originatorOR.guardar());
-        //originatorDE.setEstado(origenDestino.getDestino());
-        //CaretakerDE.addmementoDE(originatorDE.guardar());
-
-
-
-        //ventanaAsientos = new VentanaAsientos();
-        /*ventanaAsientos.setMapa(mapaLabelBuses);
-        Buses selec = mapaLabelBuses.get(LabelSelec);
-        ventanaAsientos.setBusSelec(selec);*/
 
 
         paneles[0] = origenDestino;
@@ -93,7 +75,7 @@ public class Ventana extends JFrame {
                     // Incrementa el índice al siguiente panel
                     index = (index + 1) % paneles.length;//circular increment
                     if (index == 1) {
-                        venbu = new VentanaBuses(OrigenDestino.Ruta);
+                        venbu = new VentanaBuses(origenDestino.getCiudad1(),origenDestino.getCiudad2());
 
                         Ventana.this.add(venbu);
                         venbu.setBounds(0, 0, 1200, 500);

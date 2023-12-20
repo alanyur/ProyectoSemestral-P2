@@ -16,16 +16,13 @@ import java.util.HashMap;
  */
 public class VentanaOrigen extends JFrame {
     private JPanel Panel;
-    private String Origen;
-    private static HashMap<JButton, String> mapaBotonCiudad;
+    private String Origen = "Deberia estar la ciudad aqui";
+    protected static HashMap<JButton, String> mapaBotonCiudad;
     private static ArrayList<JButton> CiudadesArrayList = new ArrayList<>();
     private static ArrayList<String> NombresCiudades = new ArrayList<>();
-    public VentanaOrigen(int u){
 
-    }
     public VentanaOrigen() {
         mapaBotonCiudad = new HashMap<>();
-        Origen = "";
 
         CiudadesArrayList.clear();
         this.setSize(500, 500);
@@ -38,25 +35,25 @@ public class VentanaOrigen extends JFrame {
         LlenarCuidades();
         AsignarImagen();
 
-        for (int j = 0; j < CiudadesArrayList.size(); j++ ) {
-            mapaBotonCiudad.put(CiudadesArrayList.get(j), NombresCiudades.get(j) ); // Asociamos el botón con la ciudad
-
-            CiudadesArrayList.get(j).addActionListener(new ActionListener() {
+        for (int j = 0; j < CiudadesArrayList.size(); j++) {
+            String nombreCiudad = NombresCiudades.get(j);
+            JButton botonCiudad = CiudadesArrayList.get(j);
+            mapaBotonCiudad.put(botonCiudad, nombreCiudad); // Asociamos el botón con el nombre de la ciudad
+            // En lugar de asociar el botón con otro botón, ahora asociamos el botón con el nombre de la ciudad
+            botonCiudad.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-
-                    JButton botonPresionado = (JButton) e.getSource();
-                    String ciudadSeleccionada = mapaBotonCiudad.get(botonPresionado); //  la ciudad asociada al botón
-
-                    OrigenDestino.Ruta += ciudadSeleccionada; //  el nombre de la ciudad seleccionada en la variable Origen
-                    //originatorOrigen.setEstado(ciudadSeleccionada);
-                    //caretakerOrigen.addmementoOrigen(originatorOrigen.guardar());
-                    botonPresionado.setVisible(false);
+                    JButton botonPresionado1 = (JButton) e.getSource();
+                    String ciudadSeleccionada = mapaBotonCiudad.get(botonPresionado1); // Obtenemos el nombre de la ciudad asociada al botón
+                    Origen = ciudadSeleccionada;
+                    DatosCompartidos.setOrigen(ciudadSeleccionada);
+                    DatosCompartidos.setBtnCiu(CiudadesArrayList);
+                    botonPresionado1.setVisible(false);
                     VentanaOrigen.this.setVisible(false);
                 }
             });
 
-            Panel.add(CiudadesArrayList.get(j));
+            Panel.add(botonCiudad);
         }
         System.out.println(Origen);
     }

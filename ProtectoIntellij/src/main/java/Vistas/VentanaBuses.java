@@ -19,20 +19,20 @@ import java.util.Random;
  */
 public  class VentanaBuses extends JPanel {
     private ImageIcon logoElige = new ImageIcon("src/main/resources/logoUltimo.png");
-    private JButton A;
-    private JButton B;
-    private JButton C;
-    private BusA busA = new BusA();
-    private BusB busB = new BusB();
-    private BusC busC = new BusC();
-    private Buses[] Buses = new Buses[3];
-    private VentanaDestino ventanaDestino;
+
+    private BusA bus1 = new BusA();
+    private BusB bus2 = new BusB();
+    private BusB bus3 = new BusB();
+    private BusB bus4 = new BusB();
+    private BusC bus5 = new BusC();
+    private Buses[] Buses = new Buses[5];
     private JLabel LOGO;
     private JLabel[] buses = new JLabel[5];
-    private Horarios[] horariosArray;
+    private Horarios[] horariosArray = {Horarios.HORA_8, Horarios.HORA_10,Horarios.HORA_12, Horarios.HORA_14, Horarios.HORA_16};
     private String Ruta;
+    private String origen;
+    private String destino;
     private String horario;
-    private Random random = new Random();
     private HashMap<JLabel, Buses> mapaBusLabel = new HashMap<>();
     private JLabel labelSeleccionado;
     private  Buses busSeleccionado;
@@ -40,8 +40,10 @@ public  class VentanaBuses extends JPanel {
 
 
 
-    public VentanaBuses(String ruta) {
-        this.Ruta = ruta;
+    public VentanaBuses(String origen, String destino) {
+        this.origen = origen;
+        this.destino = destino;
+        Ruta = origen + "-" + destino;
 
 
         //setRuta("Tu valor de Ruta aquí");
@@ -50,18 +52,9 @@ public  class VentanaBuses extends JPanel {
         this.add(LOGO);
 
 
-        horariosArray = Horarios.values();
+
         this.setBackground(new Color(0x083563));
         setLayout(new GridLayout(2,1));
-
-        /*A = new JButton("");
-        this.add(A);
-
-        B = new JButton("B");
-        this.add(B);
-
-        C = new JButton("C");
-        this.add(C);*/
 
 
         for(int i = 0; i < buses.length; i++) {
@@ -110,27 +103,23 @@ public  class VentanaBuses extends JPanel {
         return busSeleccionado;
     }
     public void atributos(){
-        Buses[0] = busA;
-        Buses[1] = busB;
-        Buses[2] = busC;
+        Buses[0] = bus1;
+        Buses[1] = bus2;
+        Buses[2] = bus3;
+        Buses[3] = bus4;
+        Buses[4] = bus5;
 
         for (int i = 0; i < buses.length; i++) {
 
 
-            int index1 = random.nextInt(horariosArray.length);
-            int index2 = random.nextInt(Buses.length);
-
-            Buses busAsociado = Buses[index2];
+            Buses busAsociado = Buses[i];
             int asientos = busAsociado.getAsientos();
 
-            horario = horariosArray[index1].getHora();
+            horario = horariosArray[i].getHora();
 
             buses[i].setSize(1200,500);
 
             String labelText = "<html><font color='black'><b>Ruta:</b> " + Ruta + "<br><b>Horario de Salida:</b> " + horario + "<br><b>Numero de Asientos: </b> " + Integer.toString(asientos) ;
-
-
-
 
             buses[i].setText(labelText);
 
