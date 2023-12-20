@@ -13,12 +13,12 @@
     El sistema debe gestionar varios tipos de autobuses (por ejemplo, con diferente número de plazas, o de 1 o 2 pisos...).
     El sistema debe mostrar un menú que permita seleccionar el autobús en función de su horario y recorrido (se supone que estos datos están disponibles con los autobuses vacíos cuando se lanza el software)
 
-### Diagrama de Clases UML
-
-### Caso de Uso 
+### Diagrama de Clases UML 
 ![image](https://github.com/alanyur/ProyectoSemestral-P2/assets/60883242/6af45845-34be-439f-b9e0-c9de6ad0cbef)
 
-![image](https://github.com/alanyur/ProyectoSemestral-P2/assets/60883242/68041cc6-8e67-42f8-a39c-a05c52282c90)
+### Caso de Uso
+![Captura de pantalla 2023-12-19 214856](https://github.com/alanyur/ProyectoSemestral-P2/assets/137654122/284a5bee-4d99-41ab-a09b-04aabbc930f3)
+En el diagrama adjunto se muestra como el usuario tiene multiples casos de usos, siendo el primero (en el código) el de elegir una ruta (origen y destino) lo cual se extendera (al presionar botón siguiente) a otra pestaña que le permitira elegir un bus (con su horario y clase específicos) esto a su vez extendera a otro caso de uso, del cual (de nuevo al presionar botón siguiente) aparecerá una tercera pestaña con una cantidad de asientos definida a partir del bus seleccionado anteriormente, esta misma tendrá implementada un botón que finalizaría la ejecución (o elecciones) del programa.
 
 
 
