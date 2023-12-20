@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
-
+//a
 /**
  * Ventana genera un JFrame con instancias de diferentes tipos de ventanas
  * (OrigenDestino, Buses, Asientos, etc.) y un JPanel con un botón el cual
