@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
-
+//a
 /**
  * Ventana genera un JFrame con instancias de diferentes tipos de ventanas
  * (OrigenDestino, Buses, Asientos, etc.) y un JPanel con un botón el cual
@@ -93,7 +93,11 @@ public class Ventana extends JFrame {
                     // Incrementa el índice al siguiente panel
                     index = (index + 1) % paneles.length;//circular increment
                     if (index == 1) {
-                        venbu = new VentanaBuses(origenDestino.getCiudad1().get(),origenDestino.getCiudad2().get());
+                        try {
+                            venbu = new VentanaBuses(origenDestino.getCiudad1().get(),origenDestino.getCiudad2().get());
+                        } catch (a ex) {
+                            throw new RuntimeException(ex);
+                        }
 
                         Ventana.this.add(venbu);
                         venbu.setBounds(0, 0, 1200, 500);
@@ -106,7 +110,11 @@ public class Ventana extends JFrame {
                     if (index == 2) {
                         Buses busSeleccionado = venbu.getBusSeleccionado();
                         int numeroAsientos = (busSeleccionado != null) ? busSeleccionado.getAsientos() : 0;
-                        ventanaAsientos = new VentanaAsientos(numeroAsientos,venbu.getBus(),venbu.getRuta(),venbu.getHorario());
+                        try {
+                            ventanaAsientos = new VentanaAsientos(numeroAsientos,venbu.getBus(),venbu.getRuta(),venbu.getHorario());
+                        } catch (a ex) {
+                            throw new RuntimeException(ex);
+                        }
                         Ventana.this.add(ventanaAsientos);
                         ventanaAsientos.setBounds(0, 0, 1200, 500);
                         paneles[index] = ventanaAsientos;
