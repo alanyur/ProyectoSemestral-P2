@@ -21,6 +21,7 @@ public abstract class Buses implements Serializable {
     public abstract int getPisos();
     public abstract int getFilas();
     public abstract int getColumnas();
+    public abstract MatrixIterator getIterator();
     public void llenar(MatrixIterator iterator){
         while (iterator.hasNext()) {
             iterator.setElement(0);
@@ -47,6 +48,14 @@ public abstract class Buses implements Serializable {
         }
     }
     public static Buses CargarBus(String archivo){
+        File archivoBus = new File(archivo);
+        if (!archivoBus.exists()) {
+            try {
+                archivoBus.createNewFile(); // Crea un nuevo archivo si no existe
+            } catch (IOException e) {
+                e.printStackTrace(); // Manejo de errores si no se puede crear el archivo
+            }
+        }
         try(ObjectInput entrada = new ObjectInputStream(new FileInputStream(archivo))){
             Buses bus = (Buses) entrada.readObject();
             System.out.println("Bus cargado desde: " + archivo);

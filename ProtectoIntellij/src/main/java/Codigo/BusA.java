@@ -40,6 +40,11 @@ public class BusA extends Buses {
         return columnas;
     }
 
+    @Override
+    public MatrixIterator getIterator() {
+        return iterator_A;
+    }
+
     public int[][] getMatrizData() {
         return MatrizData_A;
     }
