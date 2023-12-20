@@ -45,4 +45,9 @@ public class BusB extends Buses {
     public int getColumnas() {
         return columnas;
     }
+
+    @Override
+    public MatrixIterator getIterator() {
+        return iterator_B;
+    }
 }

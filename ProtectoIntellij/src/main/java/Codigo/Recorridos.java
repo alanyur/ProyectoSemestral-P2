@@ -16,7 +16,13 @@ public enum Recorridos {
 
     private final Ciudades ciudadOrigen;
     private final Ciudades ciudadDestino;
-    private Buses[] buses = {new BusA(), new BusB(), new BusB(),new BusB(), new BusC()};
+    private Buses[] buses = {
+            new BusA(),
+            new BusB(),
+            new BusB(),
+            new BusC(),
+            new BusC()
+    };
 
     Recorridos(Ciudades ciudadOrigen, Ciudades ciudadDestino) {
         this.ciudadOrigen = ciudadOrigen;

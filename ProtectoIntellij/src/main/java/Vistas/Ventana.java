@@ -92,7 +92,7 @@ public class Ventana extends JFrame {
                     // Incrementa el índice al siguiente panel
                     index = (index + 1) % paneles.length;//circular increment
                     if (index == 1) {
-                        venbu = new VentanaBuses(origenDestino.getCiudad1(),origenDestino.getCiudad2());
+                        venbu = new VentanaBuses(origenDestino.getCiudad1().get(),origenDestino.getCiudad2().get());
 
                         Ventana.this.add(venbu);
                         venbu.setBounds(0, 0, 1200, 500);
@@ -105,7 +105,7 @@ public class Ventana extends JFrame {
                     if (index == 2) {
                         Buses busSeleccionado = venbu.getBusSeleccionado();
                         int numeroAsientos = (busSeleccionado != null) ? busSeleccionado.getAsientos() : 0;
-                        ventanaAsientos = new VentanaAsientos(numeroAsientos,venbu.getBus());
+                        ventanaAsientos = new VentanaAsientos(numeroAsientos,venbu.getBus(),venbu.getRuta(),venbu.getHorario());
                         Ventana.this.add(ventanaAsientos);
                         ventanaAsientos.setBounds(0, 0, 1200, 500);
                         paneles[index] = ventanaAsientos;
@@ -115,6 +115,7 @@ public class Ventana extends JFrame {
                         texto2.setText("Si ya terminó presione Finalizar");
                     }
                     if (index == 3) {
+                        ventanaAsientos.guardar();
                         System.exit(0);
                     }
                     // Muestra el siguiente panel

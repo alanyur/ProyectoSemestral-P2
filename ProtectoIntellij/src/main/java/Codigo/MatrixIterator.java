@@ -1,8 +1,9 @@
 package Codigo;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
-public class MatrixIterator implements Iterator<Integer> {
+public class MatrixIterator implements Iterator<Integer>, Serializable {
     private int[][] matrix;
     private int filas;
     private int col;
@@ -21,6 +22,12 @@ public class MatrixIterator implements Iterator<Integer> {
         if (filas < matrix.length && col < matrix[filas].length) {
             matrix[filas][col] = value;
         }
+    }
+    public int getElement(int i, int j){
+        if (i < matrix.length && j < matrix[i].length) {
+            return matrix[i][j];
+        }
+        return -1;
     }
 
     @Override
