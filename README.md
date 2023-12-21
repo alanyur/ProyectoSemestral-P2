@@ -14,7 +14,10 @@
     El sistema debe mostrar un menú que permita seleccionar el autobús en función de su horario y recorrido (se supone que estos datos están disponibles con los autobuses vacíos cuando se lanza el software)
 
 ### Diagrama de Clases UML 
-![image](https://github.com/alanyur/ProyectoSemestral-P2/assets/60883242/6af45845-34be-439f-b9e0-c9de6ad0cbef)
+![Captura de pantalla 2023-12-20 211146](https://github.com/alanyur/ProyectoSemestral-P2/assets/137654122/042020b2-8f95-4040-9298-207b3599af3b)
+![Captura de pantalla 2023-12-20 211246](https://github.com/alanyur/ProyectoSemestral-P2/assets/137654122/b10f0760-1a22-4e58-9039-e5fd10c05a18)
+![Captura de pantalla 2023-12-20 211313](https://github.com/alanyur/ProyectoSemestral-P2/assets/137654122/4e16f2a7-54f4-4e89-b307-141ec5fc763a)
+
 
 ### Caso de Uso
 ![Captura de pantalla 2023-12-19 214856](https://github.com/alanyur/ProyectoSemestral-P2/assets/137654122/284a5bee-4d99-41ab-a09b-04aabbc930f3)
