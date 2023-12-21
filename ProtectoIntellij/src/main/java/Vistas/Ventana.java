@@ -41,12 +41,9 @@ public class Ventana extends JFrame {
         texto1.setVisible(true);
         CaretakerBu caretakerBu = new CaretakerBu();
         CaretakerOd caretakerOd = new CaretakerOd();
-        //CaretakerOR caretakerOR = new CaretakerOR();
-        //CaretakerDE caretakerDE = new CaretakerDE();
+
         OriginatorBu originatorBu = new OriginatorBu();
         OriginatorOd originatorOd = new OriginatorOd();
-        //OriginatorOR originatorOR = new OriginatorOR();
-        //OriginatorDE originatorDE = new OriginatorDE();
         this.setLayout(null);
         this.setBounds(0, 0, 1200, 700);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -59,20 +56,6 @@ public class Ventana extends JFrame {
         CaretakerOd.addmementoOd(originatorOd.guardar());//se utiliza para recuperarlo más tarde
         originatorBu.setEstado(venbu); //puede que tenga que ubicarlo despues del listener de aceptar
         CaretakerBu.addmementoBus(originatorBu.guardar());
-
-
-        //originatorOR.setEstado(origenDestino.getOrigen());
-        //CaretakerOR.addmementoOR(originatorOR.guardar());
-        //originatorDE.setEstado(origenDestino.getDestino());
-        //CaretakerDE.addmementoDE(originatorDE.guardar());
-
-
-
-        //ventanaAsientos = new VentanaAsientos();
-        /*ventanaAsientos.setMapa(mapaLabelBuses);
-        Buses selec = mapaLabelBuses.get(LabelSelec);
-        ventanaAsientos.setBusSelec(selec);*/
-
 
         paneles[0] = origenDestino;
         paneles[1] = venbu;
@@ -137,13 +120,10 @@ public class Ventana extends JFrame {
         anterior.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Restaura el estado del panel actual al estado anterior
-                if(index==1) { //aqui se devuelve al primer apartado (pero los botones no son parte de este (creo))
-                    //creo que hay que hacer memento para ventana destino y ventana origen
+
+                if(index==1) { 
+
                     originatorOd.restaurar(caretakerOd.getmementoOd(0));
-                    //origenDestino.resetorigen();
-                    //originatorOR.restaurar(caretakerOR.getmementoOR(0));
-                    //originatorDE.restaurar(caretakerDE.getmementoDE(0));
                     anterior.setVisible(false);
                     //origenDestino.getOrigen().reiniciarCiudades();
                     origenDestino = new OrigenDestino();
@@ -159,13 +139,13 @@ public class Ventana extends JFrame {
                 if(index==0){
                     System.exit(0);
                 }
-                // Oculta el panel actual
+
                 paneles[index].setVisible(false);
 
-                // Actualiza el índice al panel anterior
+
                 index = (index - 1 + paneles.length) % paneles.length; //circular decrement
 
-                // Muestra el panel anterior
+
                 paneles[index].setVisible(true);
 
 
