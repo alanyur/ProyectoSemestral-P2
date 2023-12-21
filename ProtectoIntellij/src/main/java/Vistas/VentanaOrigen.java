@@ -17,8 +17,6 @@ import java.util.HashMap;
  */
 public class VentanaOrigen extends JFrame {
     private JPanel Panel;
-    private String Origen = "Deberia estar la ciudad aqui";
-    protected static HashMap<JButton, String> mapaBotonCiudad;
 
     public VentanaOrigen(JButton[] botones) {
 
@@ -33,8 +31,6 @@ public class VentanaOrigen extends JFrame {
         }
 
     }
-    public String getOrigen() {
-        return Origen;
-    }
+
 }
 

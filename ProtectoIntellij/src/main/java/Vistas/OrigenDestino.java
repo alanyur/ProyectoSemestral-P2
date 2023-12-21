@@ -27,7 +27,6 @@ public class OrigenDestino extends JPanel {
     private VentanaOrigen ventanaOrigen;
     private VentanaDestino ventanaDestino;
     private static JButton[] botones ;
-    private static JButton[] botones2;
     private static Ciudades[] ciudades =  Ciudades.values();
     private static AtomicInteger index1 = new AtomicInteger(-1);
     private static AtomicInteger index2 = new AtomicInteger(-1);
@@ -74,14 +73,6 @@ public class OrigenDestino extends JPanel {
                 destino.setVisible(false);
             }
         });
-    }
-
-    public JButton getOrigen() {
-        return origen;
-    }
-
-    public JButton getDestino() {
-        return destino;
     }
 
     public AtomicReference<Ciudades> getCiudad1() {

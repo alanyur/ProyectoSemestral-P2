@@ -65,10 +65,6 @@ import java.util.HashMap;
                 }
 
             }
-
-            public void setBusSelec(Buses busSelec) {
-                this.busSelec = busSelec;
-            }
             public void EstilosListener(JButton btn, MatrixIterator iterator,int filas, int columnas){
                 if(iterator.getElement(filas,columnas) == 1){
                     btn.setBackground(new Color(0x830808));

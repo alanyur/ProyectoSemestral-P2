@@ -20,11 +20,6 @@ import java.util.HashMap;
  */
 public  class VentanaBuses extends JPanel {
     private ImageIcon logoElige = new ImageIcon("src/main/resources/logoUltimo.png");
-    /*private BusA bus1 = new BusA();
-    private BusB bus2 = new BusB();
-    private BusB bus3 = new BusB();
-    private BusB bus4 = new BusB();
-    private BusC bus5 = new BusC();*/
     private Buses[] Buses1;
     private JLabel LOGO;
     private JLabel[] busesLabel = new JLabel[5];
@@ -141,19 +136,8 @@ public  class VentanaBuses extends JPanel {
 
         }
     }
-
-    public void setRuta(String ruta) {
-        Ruta = ruta;
-    }
     public String getRuta(){
         return Ruta;
-    }
-
-    public JLabel getLabelSeleccionado() {
-        return labelSeleccionado;
-    }
-    public HashMap<JLabel, Buses> getMapaBusLabel(){
-        return mapaBusLabel;
     }
 
     public  Codigo.Buses getBusSeleccionado() {
@@ -181,10 +165,5 @@ public  class VentanaBuses extends JPanel {
         return horario;
     }
 
-    public void Cargar(Buses[] aux){
-        for (int i = 0; i < aux.length; i++) {
-            //Codigo.Buses.
-        }
-    }
 }
 

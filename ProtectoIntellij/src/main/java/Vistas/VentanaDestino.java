@@ -14,7 +14,6 @@ import java.util.ArrayList;
  */
 public class VentanaDestino extends JFrame {
     private JPanel Panel;
-    private String destino = "Y aqui la otra";
     public VentanaDestino(JButton[] botones){
 
         this.setBounds(600,0,500, 300);
@@ -28,9 +27,5 @@ public class VentanaDestino extends JFrame {
         }
 
 
-    }
-
-    public String getDestino() {
-        return destino;
     }
 }

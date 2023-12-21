@@ -29,8 +29,6 @@ public class Ventana extends JFrame {
     private JButton siguiente;
     private JButton anterior;
     private JPanel[] paneles = new JPanel[4];
-    private HashMap<JLabel, Buses> mapaLabelBuses;
-    private JLabel Pasaje;
     private int index = 0;
     public Ventana() {
         texto2 = new JLabel();
